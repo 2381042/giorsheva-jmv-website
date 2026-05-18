@@ -1,0 +1,557 @@
+/* --- Navigation Bar --- */
+.navbar-glass {
+  background: var(--bg-glass) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  font-family: var(--font-heading);
+  letter-spacing: -0.5px;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: var(--text-secondary) !important;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--text-primary) !important;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--brand-red);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* --- Buttons --- */
+.btn-modern-red {
+  background: linear-gradient(135deg, var(--brand-red), var(--brand-red-hover));
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-modern-red:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.6);
+  color: #fff;
+}
+
+.btn-modern-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.btn-modern-outline:hover {
+  border-color: var(--brand-red);
+  color: var(--brand-red);
+  background: var(--brand-red-glass);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 120px 0 60px 0;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding: 100px 0 40px 0;
+  }
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,1) 100%);
+  z-index: 1;
+}
+
+.hero-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center 25%;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.feature-glass-box {
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 30px 20px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-glass-box:hover {
+  transform: translateY(-10px);
+  border-color: var(--brand-red-glass);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* --- Product Cards --- */
+.product-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-12px);
+  border-color: var(--brand-red);
+  box-shadow: var(--shadow-red);
+}
+
+.product-icon-wrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--brand-red-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--brand-red);
+  transition: all 0.3s;
+}
+
+.product-card:hover .product-icon-wrapper {
+  background: var(--brand-red);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* --- Partnership Form --- */
+.form-modern-dark .form-control {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 12px;
+  padding: 15px 20px;
+  transition: all 0.3s ease;
+}
+
+.form-modern-dark .form-control:focus {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: var(--brand-red);
+  box-shadow: 0 0 0 4px var(--brand-red-glass);
+  outline: none;
+}
+
+.form-modern-dark .form-control::placeholder {
+  color: #666;
+}
+
+/* --- Gallery --- */
+.gallery-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s;
+}
+
+.gallery-item:hover {
+  border-color: var(--brand-red);
+}
+
+.gallery-item .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+/* --- Floating WhatsApp --- */
+.floating-wa {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50px;
+  padding: 12px 25px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  z-index: 1050;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-wa:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+  color: white !important;
+}
+
+/* Animations */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+/* --- New Partnership & Bonus Sections --- */
+/* Trust Badges */
+.trust-badge {
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.trust-badge:hover {
+  transform: translateY(-8px);
+  border-color: var(--brand-red);
+  box-shadow: var(--shadow-red);
+}
+
+.trust-badge .icon-main {
+  color: var(--brand-red);
+  font-size: 3rem;
+  margin-bottom: 15px;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.trust-badge:hover .icon-main {
+  transform: scale(1.1);
+}
+
+/* Red Banner Gradient */
+.bg-gradient-red {
+  background: linear-gradient(135deg, #a00000 0%, #d32f2f 100%);
+}
+
+.banner-icon {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 10px;
+}
+
+/* Glowing Yellow Button */
+.btn-yellow-glow {
+  background-color: #ffb300;
+  color: #000;
+  border: none;
+  font-weight: 700;
+  padding: 15px 35px;
+  border-radius: 50px;
+  box-shadow: 0 0 15px rgba(255, 179, 0, 0.5);
+  transition: all 0.3s ease;
+  animation: pulse-yellow 2s infinite;
+}
+
+.btn-yellow-glow:hover {
+  background-color: #ffca28;
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(255, 179, 0, 0.8);
+}
+
+@keyframes pulse-yellow {
+  0% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(255, 179, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0); }
+}
+
+/* Bonus List Items */
+.bonus-list-item {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--brand-red);
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.bonus-list-item:hover {
+  transform: translateX(10px);
+  background-color: rgba(211, 47, 47, 0.1);
+  border-color: var(--brand-red);
+}
+
+.bonus-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--brand-red);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+
+/* Partnership Cards */
+.partnership-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 30px;
+  height: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.partnership-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.partnership-card:hover {
+  transform: translateY(-5px);
+}
+
+.partnership-card:hover::before {
+  border-color: var(--brand-red);
+  box-shadow: inset 0 0 20px rgba(211, 47, 47, 0.2);
+}
+
+.partnership-card .icon-top {
+  font-size: 3rem;
+  color: var(--brand-red);
+  margin-bottom: 20px;
+}
+
+/* --- Creative Product Showcase --- */
+.product-showcase-container {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.brand-section {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.brand-section:hover {
+  transform: scale(1.02);
+  z-index: 10;
+  box-shadow: 0 0 30px rgba(255,0,0,0.2);
+}
+
+.brand-mizu {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.brand-agioo {
+  background: linear-gradient(135deg, #a00000 0%, #d32f2f 100%);
+}
+
+.product-item-text {
+  transition: all 0.3s ease;
+  padding-left: 15px;
+  border-left: 2px solid transparent;
+}
+
+.product-item-text:hover {
+  border-left-color: #fff;
+  transform: translateX(10px);
+}
+
+.brand-mizu .product-item-text:hover {
+  border-left-color: var(--brand-red);
+}
+
+/* --- Testimonials & Partners --- */
+.testimonial-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 30px;
+  height: 100%;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  font-size: 10rem;
+  color: rgba(255, 255, 255, 0.15);
+  font-family: serif;
+  line-height: 1;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(211, 47, 47, 0.5);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Infinite Marquee */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  padding: 20px 0;
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.marquee-content {
+  display: inline-flex;
+  animation: scroll-left 30s linear infinite;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+.partner-logo-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  margin: 0 40px;
+  color: rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.partner-logo-text:hover {
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 0 15px rgba(255,255,255,0.5);
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- Flip Product Cards --- */
+.flip-card {
+  height: 380px;
+  perspective: 1200px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+@media (max-width: 768px) {
+  .flip-card {
+    height: 420px;
+  }
+}
