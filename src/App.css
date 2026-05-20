@@ -1,26 +1,43 @@
-/* --- Navigation Bar --- */
+/* ==========================================
+   FAIRE.COM B2B DESIGN SYSTEM & STYLING FOR JMV
+   ========================================== */
+
+/* --- Universal CSS Resets & Styles --- */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Navigation Bar (Faire-Style Sticky Header) --- */
 .navbar-glass {
   background: var(--bg-glass) !important;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
   transition: all 0.3s ease;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.02);
 }
 
 .navbar-brand {
   font-family: var(--font-heading);
+  font-weight: 800;
   letter-spacing: -0.5px;
+  color: var(--text-primary) !important;
 }
 
 .nav-link {
   font-weight: 500;
+  font-size: 0.95rem;
   color: var(--text-secondary) !important;
-  transition: color 0.3s;
+  transition: color 0.25s ease;
   position: relative;
+  padding: 0.5rem 1rem !important;
 }
 
 .nav-link:hover {
-  color: var(--text-primary) !important;
+  color: var(--brand-red) !important;
 }
 
 .nav-link::after {
@@ -29,89 +46,81 @@
   width: 0%;
   height: 2px;
   bottom: 0;
-  left: 0;
+  left: 1rem;
+  right: 1rem;
   background-color: var(--brand-red);
-  transition: width 0.3s ease;
+  transition: width 0.25s ease;
 }
 
-.nav-link:hover::after {
-  width: 100%;
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: calc(100% - 2rem);
 }
 
 /* --- Buttons --- */
 .btn-modern-red {
-  background: linear-gradient(135deg, var(--brand-red), var(--brand-red-hover));
-  color: #fff;
+  background: var(--brand-red);
+  color: #fff !important;
   border: none;
   font-weight: 600;
-  padding: 12px 28px;
-  border-radius: 50px;
-  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
-  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  padding: 10px 24px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(211, 47, 47, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 
 .btn-modern-red:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.6);
-  color: #fff;
+  background: var(--brand-red-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
 }
 
 .btn-modern-outline {
   background: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-  font-weight: 500;
-  padding: 12px 28px;
-  border-radius: 50px;
-  transition: all 0.3s ease;
+  color: var(--text-primary) !important;
+  border: 1px solid #C5C5C5;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 10px 24px;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  cursor: pointer;
 }
 
 .btn-modern-outline:hover {
   border-color: var(--brand-red);
-  color: var(--brand-red);
+  color: var(--brand-red) !important;
   background: var(--brand-red-glass);
+  transform: translateY(-1px);
 }
 
 /* --- Hero Section --- */
 .hero-section {
   position: relative;
-  min-height: 90vh;
+  background-color: var(--bg-primary);
+  min-height: 85vh;
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 120px 0 60px 0;
-}
-
-@media (max-width: 768px) {
-  .hero-section {
-    min-height: auto;
-    padding: 100px 0 40px 0;
-  }
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
+  padding: 140px 0 80px 0;
 }
 
 .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(180deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,1) 100%);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(250, 249, 246, 0.6) 0%, rgba(250, 249, 246, 1) 100%);
   z-index: 1;
 }
 
 .hero-bg-image {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center 25%;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
   z-index: 0;
-  opacity: 0.8;
+  opacity: 0.15;
 }
 
 .hero-content {
@@ -120,415 +129,212 @@
   width: 100%;
 }
 
-.feature-glass-box {
-  background: rgba(20, 20, 20, 0.6);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 30px 20px;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+.hero-content h1 {
+  color: var(--text-primary);
+  letter-spacing: -1.5px;
+  line-height: 1.15;
 }
 
-.feature-glass-box:hover {
-  transform: translateY(-10px);
-  border-color: var(--brand-red-glass);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+/* --- Quota Checker (Faire search experience) --- */
+.quota-checker-wrapper {
+  max-width: 650px;
+  margin: 35px auto 0;
+  position: relative;
+  z-index: 100;
 }
 
-/* --- Product Cards --- */
-.product-card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  cursor: pointer;
+.quota-search-bar {
+  display: flex;
+  background: var(--bg-secondary);
+  border: 1px solid #CCCCCC;
+  border-radius: 8px;
+  padding: 4px 4px 4px 16px;
+  transition: all 0.25s ease;
+  box-shadow: var(--shadow-sm);
 }
 
-.product-card:hover {
-  transform: translateY(-12px);
+.quota-search-bar:focus-within {
   border-color: var(--brand-red);
-  box-shadow: var(--shadow-red);
+  box-shadow: 0 0 0 4px var(--brand-red-glass), var(--shadow-lg);
 }
 
-.product-icon-wrapper {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: var(--brand-red-glass);
+.quota-input-wrapper {
+  position: relative;
+  flex-grow: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  color: var(--brand-red);
-  transition: all 0.3s;
 }
 
-.product-card:hover .product-icon-wrapper {
-  background: var(--brand-red);
-  color: #fff;
-  transform: scale(1.1);
-}
-
-/* --- Partnership Form --- */
-.form-modern-dark .form-control {
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-color);
+.quota-search-bar input {
+  width: 100%;
+  background: transparent;
+  border: none;
   color: var(--text-primary);
-  border-radius: 12px;
-  padding: 15px 20px;
-  transition: all 0.3s ease;
-}
-
-.form-modern-dark .form-control:focus {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: var(--brand-red);
-  box-shadow: 0 0 0 4px var(--brand-red-glass);
+  font-size: 1rem;
   outline: none;
+  padding: 10px 0;
 }
 
-.form-modern-dark .form-control::placeholder {
-  color: #666;
+.quota-search-bar input::placeholder {
+  color: #8E8E8E;
 }
 
-/* --- Gallery --- */
-.gallery-item {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  transition: all 0.3s;
-}
-
-.gallery-item:hover {
-  border-color: var(--brand-red);
-}
-
-.gallery-item .overlay {
+.quota-dropdown {
   position: absolute;
-  top: 0;
+  top: calc(100% + 8px);
   left: 0;
   right: 0;
-  bottom: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  display: flex;
-  align-items: flex-end;
-  padding: 20px;
-}
-
-.gallery-item:hover .overlay {
-  opacity: 1;
-}
-
-/* --- Floating WhatsApp --- */
-.floating-wa {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: #25D366;
-  color: white;
-  border-radius: 50px;
-  padding: 12px 25px;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-  z-index: 1050;
-  text-decoration: none;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.floating-wa:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-  color: white !important;
-}
-
-/* Animations */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-
-/* --- New Partnership & Bonus Sections --- */
-/* Trust Badges */
-.trust-badge {
-  background: var(--bg-glass);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 30px 20px;
-  text-align: center;
-  transition: all 0.3s ease;
-  height: 100%;
-}
-
-.trust-badge:hover {
-  transform: translateY(-8px);
-  border-color: var(--brand-red);
-  box-shadow: var(--shadow-red);
-}
-
-.trust-badge .icon-main {
-  color: var(--brand-red);
-  font-size: 3rem;
-  margin-bottom: 15px;
-  display: block;
-  transition: transform 0.3s;
-}
-
-.trust-badge:hover .icon-main {
-  transform: scale(1.1);
-}
-
-/* Red Banner Gradient */
-.bg-gradient-red {
-  background: linear-gradient(135deg, #a00000 0%, #d32f2f 100%);
-}
-
-.banner-icon {
-  font-size: 2.5rem;
-  color: white;
-  margin-bottom: 10px;
-}
-
-/* Glowing Yellow Button */
-.btn-yellow-glow {
-  background-color: #ffb300;
-  color: #000;
-  border: none;
-  font-weight: 700;
-  padding: 15px 35px;
-  border-radius: 50px;
-  box-shadow: 0 0 15px rgba(255, 179, 0, 0.5);
-  transition: all 0.3s ease;
-  animation: pulse-yellow 2s infinite;
-}
-
-.btn-yellow-glow:hover {
-  background-color: #ffca28;
-  color: #000;
-  transform: translateY(-3px);
-  box-shadow: 0 0 25px rgba(255, 179, 0, 0.8);
-}
-
-@keyframes pulse-yellow {
-  0% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.7); }
-  70% { box-shadow: 0 0 0 15px rgba(255, 179, 0, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0); }
-}
-
-/* Bonus List Items */
-.bonus-list-item {
-  background-color: var(--bg-secondary);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-left: 5px solid var(--brand-red);
-  border-radius: 12px;
-  padding: 15px 20px;
-  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  max-height: 250px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  z-index: 1010;
+}
+
+.quota-dropdown-item {
+  padding: 12px 20px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-size: 0.95rem;
+  text-align: left;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  transition: all 0.3s ease;
-  cursor: default;
 }
 
-.bonus-list-item:hover {
-  transform: translateX(10px);
-  background-color: rgba(211, 47, 47, 0.1);
+.quota-dropdown-item:hover {
+  background: #FAF9F6;
+  color: var(--brand-red);
+}
+
+.quota-result-card {
+  background: var(--bg-secondary);
+  border: 1px solid #4CAF50;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 20px;
+  box-shadow: var(--shadow-lg);
+  animation: detailFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.quota-result-card.warning-badge {
+  border-color: #FF9800;
+}
+
+.quota-result-card.danger-badge {
+  border-color: #F44336;
+}
+
+/* --- Wholesale Benefits Grid --- */
+.wholesale-benefits-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.wholesale-benefit-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  height: 100%;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+
+.wholesale-benefit-card:hover {
+  transform: translateY(-4px);
   border-color: var(--brand-red);
+  box-shadow: var(--shadow-lg);
 }
 
-.bonus-icon-circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--brand-red);
-  color: white;
+.wholesale-benefit-card .icon-box {
+  background: var(--brand-red-glass);
+  color: var(--brand-red);
+  width: 52px;
+  height: 52px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  margin-right: 15px;
-}
-
-/* Partnership Cards */
-.partnership-card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 30px;
-  height: 100%;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.partnership-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: 16px;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.partnership-card:hover {
-  transform: translateY(-5px);
-}
-
-.partnership-card:hover::before {
-  border-color: var(--brand-red);
-  box-shadow: inset 0 0 20px rgba(211, 47, 47, 0.2);
-}
-
-.partnership-card .icon-top {
-  font-size: 3rem;
-  color: var(--brand-red);
+  font-size: 1.5rem;
   margin-bottom: 20px;
+  transition: all 0.25s ease;
 }
 
-/* --- Creative Product Showcase --- */
-.product-showcase-container {
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.1);
+.wholesale-benefit-card:hover .icon-box {
+  background: var(--brand-red);
+  color: #fff;
 }
 
-.brand-section {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.5s ease;
+/* --- Brand & Category Filter Nav --- */
+.brand-filter-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
 }
 
-.brand-section:hover {
-  transform: scale(1.02);
-  z-index: 10;
-  box-shadow: 0 0 30px rgba(255,0,0,0.2);
+.brand-filter-btn {
+  background: var(--bg-secondary);
+  border: 1px solid #D6D6D6;
+  color: var(--text-secondary);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
 }
 
-.brand-mizu {
-  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-  border-right: 1px solid rgba(255,255,255,0.1);
+.brand-filter-btn:hover {
+  background: #FAF9F6;
+  color: var(--text-primary);
+  border-color: #A0A0A0;
 }
 
-.brand-agioo {
-  background: linear-gradient(135deg, #a00000 0%, #d32f2f 100%);
+.brand-filter-btn.active {
+  background: var(--text-primary);
+  color: #ffffff;
+  border-color: var(--text-primary);
 }
 
-.product-item-text {
-  transition: all 0.3s ease;
-  padding-left: 15px;
-  border-left: 2px solid transparent;
+.brand-filter-btn .count-badge {
+  background: #EBEBEB;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
 }
 
-.product-item-text:hover {
-  border-left-color: #fff;
-  transform: translateX(10px);
+.brand-filter-btn.active .count-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
-.brand-mizu .product-item-text:hover {
-  border-left-color: var(--brand-red);
-}
-
-/* --- Testimonials & Partners --- */
-.testimonial-card {
-  background: var(--bg-glass);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 30px;
-  height: 100%;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.testimonial-card::before {
-  content: '"';
-  position: absolute;
-  top: -20px;
-  right: 10px;
-  font-size: 10rem;
-  color: rgba(255, 255, 255, 0.15);
-  font-family: serif;
-  line-height: 1;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(211, 47, 47, 0.5);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-/* Infinite Marquee */
-.marquee-container {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  padding: 20px 0;
-  background: rgba(255,255,255,0.02);
-  border-top: 1px solid rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.marquee-content {
-  display: inline-flex;
-  animation: scroll-left 30s linear infinite;
-}
-
-.marquee-content:hover {
-  animation-play-state: paused;
-}
-
-.partner-logo-text {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  font-size: 2rem;
-  margin: 0 40px;
-  color: rgba(255,255,255,0.4);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  letter-spacing: 1px;
-}
-
-.partner-logo-text:hover {
-  color: rgba(255,255,255,0.9);
-  text-shadow: 0 0 15px rgba(255,255,255,0.5);
-}
-
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* --- Flip Product Cards --- */
+/* --- Faire B2B Wholesale Product Cards --- */
 .flip-card {
-  height: 380px;
+  height: 410px;
   perspective: 1200px;
-  cursor: pointer;
 }
 
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   transform-style: preserve-3d;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  background: var(--bg-secondary);
 }
 
 .flip-card:hover .flip-card-inner {
@@ -542,16 +348,405 @@
   height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 20px;
+  border-radius: 8px;
   overflow: hidden;
+  background: var(--bg-secondary);
 }
 
 .flip-card-back {
   transform: rotateY(180deg);
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
 }
 
-@media (max-width: 768px) {
-  .flip-card {
-    height: 420px;
+.card-brand-badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--brand-red);
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* --- Campaigns Section & 3D Deck --- */
+.campaign-section {
+  background-color: #FAF9F6;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.poster-deck-wrapper {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster-deck {
+  position: relative;
+  width: 270px;
+  height: 360px;
+  perspective: 1000px;
+}
+
+.poster-card-3d {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, z-index 0.6s ease;
+  cursor: pointer;
+  background: var(--bg-secondary);
+}
+
+.poster-card-3d img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.poster-card-3d.active {
+  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  z-index: 10;
+  opacity: 1;
+  border-color: var(--brand-red);
+  box-shadow: 0 10px 30px rgba(211, 47, 47, 0.15);
+}
+
+.poster-card-3d.stack-1 {
+  transform: translate3d(20px, 15px, -20px) scale(0.95) rotate(2deg);
+  z-index: 5;
+  opacity: 0.85;
+}
+
+.poster-card-3d.stack-2 {
+  transform: translate3d(40px, 30px, -40px) scale(0.9) rotate(4deg);
+  z-index: 4;
+  opacity: 0.65;
+}
+
+.poster-card-3d.stack-3 {
+  transform: translate3d(60px, 45px, -60px) scale(0.85) rotate(6deg);
+  z-index: 3;
+  opacity: 0.45;
+}
+
+.poster-deck:hover .poster-card-3d.stack-1 {
+  transform: translate3d(50px, 10px, -10px) scale(0.96) rotate(3deg);
+}
+
+.poster-deck:hover .poster-card-3d.stack-2 {
+  transform: translate3d(90px, 18px, -20px) scale(0.92) rotate(6deg);
+}
+
+.poster-deck:hover .poster-card-3d.stack-3 {
+  transform: translate3d(125px, 25px, -30px) scale(0.88) rotate(9deg);
+}
+
+/* --- Marquees --- */
+.poster-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px 0;
+}
+
+.poster-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-marquee-posters 30s linear infinite;
+}
+
+.poster-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.poster-marquee-item {
+  position: relative;
+  width: 250px;
+  height: 140px;
+  margin: 0 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.poster-marquee-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.poster-marquee-item:hover img {
+  transform: scale(1.05);
+}
+
+.poster-marquee-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster-marquee-item:hover .poster-marquee-overlay {
+  opacity: 1;
+}
+
+@keyframes scroll-marquee-posters {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- Partnership Types & Info Cards --- */
+.partnership-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  height: 100%;
+  transition: all 0.25s ease;
+}
+
+.partnership-card:hover {
+  border-color: var(--brand-red);
+  box-shadow: var(--shadow-lg);
+}
+
+/* --- B2B Form --- */
+.form-modern-light .form-control {
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  color: var(--text-primary);
+  border-radius: 6px;
+  padding: 12px 16px;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.form-modern-light .form-control:focus {
+  border-color: var(--brand-red);
+  box-shadow: 0 0 0 4px var(--brand-red-glass);
+  outline: none;
+}
+
+.form-modern-light .form-label {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+/* --- Testimonials --- */
+.testimonial-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  height: 100%;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.testimonial-card:hover {
+  border-color: var(--brand-red);
+  box-shadow: var(--shadow-lg);
+}
+
+.testimonial-card::before {
+  content: '“';
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  font-size: 6rem;
+  color: rgba(211, 47, 47, 0.08);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+/* --- Floating WhatsApp --- */
+.floating-wa {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50px;
+  padding: 12px 24px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  z-index: 1050;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.floating-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  color: white !important;
+}
+
+/* --- Partner Logotype Row --- */
+.partner-logo-text {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.6rem;
+  margin: 0 35px;
+  color: #C5C5C5;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.partner-logo-text:hover {
+  color: var(--text-primary);
+}
+
+/* --- Trust Badges (ASTM, etc.) --- */
+.trust-badge {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px 24px;
+  text-align: center;
+  transition: all 0.25s ease;
+  height: 100%;
+}
+
+.trust-badge:hover {
+  border-color: var(--brand-red);
+  box-shadow: var(--shadow-lg);
+}
+
+.trust-badge .icon-main {
+  color: var(--brand-red);
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* --- Bonus Items --- */
+.bonus-list-item {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--brand-red);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  transition: all 0.25s ease;
+}
+
+.bonus-list-item:hover {
+  transform: translateX(4px);
+  border-color: var(--brand-red);
+}
+
+.bonus-icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--brand-red-glass);
+  color: var(--brand-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  margin-right: 12px;
+}
+
+/* --- Detail Modal Overlay & Side Drawer --- */
+.b2b-detail-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.b2b-detail-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  max-width: 960px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.b2b-detail-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background: #EBEBEB;
+  color: var(--text-primary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.b2b-detail-close:hover {
+  background: var(--brand-red);
+  color: white;
+}
+
+/* --- Animations --- */
+.fade-up {
+  opacity: 1;
+}
+
+/* --- Responsive Helpers --- */
+@media (max-width: 991px) {
+  .hero-section {
+    padding: 120px 0 60px 0;
   }
 }

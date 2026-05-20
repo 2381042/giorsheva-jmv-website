@@ -1,24 +1,24 @@
 :root {
-  /* Red and Black Theme Palette */
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #141414;
-  --bg-glass: rgba(20, 20, 20, 0.7);
+  /* Premium Faire-Style Light Theme Palette */
+  --bg-primary: #FAF9F6;     /* Cream/Off-white background */
+  --bg-secondary: #ffffff;   /* Pure white cards/panels */
+  --bg-glass: rgba(255, 255, 255, 0.85); /* Clean glassy white */
   
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
+  --text-primary: #1F1F1F;   /* Elegant charcoal */
+  --text-secondary: #5E5E5E; /* Muted grey/brown text */
   
-  --brand-red: #d32f2f;
+  --brand-red: #d32f2f;      /* JMV Brand Red */
   --brand-red-hover: #b71c1c;
-  --brand-red-glass: rgba(211, 47, 47, 0.15);
+  --brand-red-glass: rgba(211, 47, 47, 0.08);
   
-  --border-color: #2a2a2a;
+  --border-color: #E2E2E2;   /* Elegant light borders */
   
   --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
   
-  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
-  --shadow-red: 0 8px 30px rgba(211, 47, 47, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --shadow-red: 0 8px 30px rgba(211, 47, 47, 0.12);
 }
 
 body {
@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #ccc;
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
