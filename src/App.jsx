@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import './App.css';
 
 // DATA PRODUK RESMI JMV (Mizu-X, Agioo, Bio Luminex, Maklon B2B)
@@ -65,81 +65,52 @@ const PRODUCT_DATA = [
   },
 ];
 
-// DATA CAMPAIGN POSTERS
-const CAMPAIGN_POSTERS = [
-  {
-    id: 'hadiah',
-    title: 'Hadiah Distributor',
-    image: '/assets/posters/poster-hadiah.jpg',
-    desc: 'Hadiah langsung tanpa diundi: Voucher Pertamina, Logam Emas, HP, Motor, Mobil Traga.'
-  },
-  {
-    id: 'solusi',
-    title: 'Solusi Perawatan Harian',
-    image: '/assets/posters/poster-solusi.jpg',
-    desc: 'Mizu-X Autocare & Car Wash premium untuk semua jenis kendaraan.'
-  },
-  {
-    id: 'coolant',
-    title: 'Standar Internasional',
-    image: '/assets/posters/poster-coolant.jpg',
-    desc: 'Agioo Engine Coolant dengan uji standar laboratorium ASTM Amerika.'
-  },
-  {
-    id: 'armada',
-    title: 'Dukungan Armada JMV',
-    image: '/assets/posters/poster-armada.jpg',
-    desc: 'Pengiriman cepat dengan armada distribusi mandiri ke seluruh Indonesia.'
-  }
-];
-
-
-// KOMPONEN BONUS (BARU)
+// KOMPONEN BONUS
 const BonusSection = () => {
   return (
     <section className="py-5" style={{ backgroundColor: 'var(--bg-secondary)' }}>
       <div className="container py-5">
-        <div className="row align-items-center g-5">
-          <div className="col-lg-5 fade-up">
-            <div className="p-5 rounded-4 h-100 text-center text-lg-start d-flex flex-column justify-content-center border shadow-sm" style={{ borderColor: 'var(--border-color)', backgroundColor: 'var(--bg-secondary)' }}>
-              <h2 className="display-4 fw-bold mb-4" style={{ color: 'var(--text-primary)' }}>Selalu Ada<br /><span className="text-red">Hadiah & Bonus</span></h2>
+        <div className="row align-items-center g-5 reveal">
+          <div className="col-lg-5">
+            <div className="bg-gradient-red p-5 rounded-4 h-100 text-center text-lg-start d-flex flex-column justify-content-center border shadow-lg" style={{ borderColor: 'var(--brand-red)', minHeight: '380px' }}>
+              <h2 className="display-4 fw-bold text-white mb-4">Selalu Ada<br />Bonus & Hadiah</h2>
               <div>
-                <a href="https://wa.me/6282323244285?text=Halo%20JMV,%20saya%20ingin%20bertanya%20mengenai%20program%20hadiah%20dan%20bonus%20distributor." target="_blank" rel="noopener noreferrer" className="btn-modern-red d-inline-flex align-items-center text-decoration-none">
+                <a href="#partnership" className="btn-yellow-glow d-inline-flex align-items-center text-decoration-none">
                   Tanya-Tanya via Chat
                 </a>
               </div>
             </div>
           </div>
-          <div className="col-lg-7 fade-up delay-100">
+          <div className="col-lg-7">
             <div className="bonus-list-item">
               <div className="bonus-icon-circle"><i className="bi bi-gift-fill"></i></div>
-              <h5 className="mb-0 fw-bold" style={{ color: 'var(--text-primary)' }}>Hadiah Langsung Voucher PERTAMINA</h5>
+              <h5 className="mb-0 text-white fw-bold">Hadiah Langsung Voucher PERTAMINA</h5>
               <div className="ms-auto text-success fs-3"><i className="bi bi-cash-stack"></i></div>
             </div>
-            <div className="bonus-list-item">
+            <div className="bonus-list-item" style={{ transitionDelay: '0.1s' }}>
               <div className="bonus-icon-circle"><i className="bi bi-award-fill"></i></div>
-              <h5 className="mb-0 fw-bold" style={{ color: 'var(--text-primary)' }}>Hadiah Langsung Logam Emas</h5>
+              <h5 className="mb-0 text-white fw-bold">Hadiah Langsung Logam Emas</h5>
               <div className="ms-auto text-warning fs-3"><i className="bi bi-gem"></i></div>
             </div>
-            <div className="bonus-list-item">
+            <div className="bonus-list-item" style={{ transitionDelay: '0.2s' }}>
               <div className="bonus-icon-circle"><i className="bi bi-phone-fill"></i></div>
-              <h5 className="mb-0 fw-bold" style={{ color: 'var(--text-primary)' }}>Hadiah Langsung Handphone Premium</h5>
+              <h5 className="mb-0 text-white fw-bold">Hadiah Langsung Handphone Premium</h5>
               <div className="ms-auto text-info fs-3"><i className="bi bi-phone"></i></div>
             </div>
-            <div className="bonus-list-item">
+            <div className="bonus-list-item" style={{ transitionDelay: '0.3s' }}>
               <div className="bonus-icon-circle"><i className="bi bi-bicycle"></i></div>
-              <h5 className="mb-0 fw-bold" style={{ color: 'var(--text-primary)' }}>Hadiah Langsung Motor Listrik</h5>
+              <h5 className="mb-0 text-white fw-bold">Hadiah Langsung Motor Listrik</h5>
               <div className="ms-auto text-danger fs-3"><i className="bi bi-bicycle"></i></div>
             </div>
-            <div className="bonus-list-item">
+            <div className="bonus-list-item" style={{ transitionDelay: '0.4s' }}>
               <div className="bonus-icon-circle"><i className="bi bi-truck"></i></div>
-              <h5 className="mb-0 fw-bold" style={{ color: 'var(--text-primary)' }}>Hadiah Langsung Mobil Traga</h5>
+              <h5 className="mb-0 text-white fw-bold">Hadiah Langsung Mobil Traga</h5>
               <div className="ms-auto text-primary fs-3"><i className="bi bi-truck"></i></div>
             </div>
-            <div className="bonus-list-item">
+            <div className="bonus-list-item" style={{ transitionDelay: '0.5s' }}>
               <div className="bonus-icon-circle"><i className="bi bi-gift"></i></div>
-              <h5 className="mb-0 fw-bold" style={{ color: 'var(--text-primary)' }}>Hadiah Untung Lainnya...</h5>
-              <div className="ms-auto text-danger fs-3"><i className="bi bi-gift-fill"></i></div>
+              <h5 className="mb-0 text-white fw-bold">Hadiah Untung Lainnya...</h5>
+              <div className="ms-auto text-light fs-3"><i className="bi bi-gift-fill"></i></div>
             </div>
           </div>
         </div>
@@ -148,30 +119,36 @@ const BonusSection = () => {
   );
 };
 
-// KOMPONEN RED BANNER (BARU - DESAIN MODERN)
+// KOMPONEN VALUE PROPOSITION RED BANNER
 const ValuePropositionBanner = () => {
   return (
-    <section className="position-relative py-5 mt-4 overflow-hidden" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
-      <div className="container py-5 position-relative z-1">
+    <section className="position-relative py-5 mt-4 overflow-hidden" style={{ backgroundColor: '#0a0a0a', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+      {/* Background Decor */}
+      <div className="position-absolute top-0 start-0 w-100 h-100" style={{
+        background: 'radial-gradient(circle at 80% 20%, rgba(211, 47, 47, 0.3) 0%, rgba(10, 10, 10, 1) 60%)',
+        zIndex: 0
+      }}></div>
+
+      <div className="container py-5 position-relative z-1 reveal">
         <div className="row align-items-center g-5">
           {/* Bagian Kiri: Hook Utama */}
-          <div className="col-lg-6 fade-up">
-            <span className="badge bg-red mb-3 px-3 py-2 rounded-pill text-white letter-spacing-1">PELUANG EMAS</span>
-            <h2 className="display-4 fw-bold mb-4 line-height-sm" style={{ color: 'var(--text-primary)' }}>
+          <div className="col-lg-6">
+            <span className="badge bg-red mb-3 px-3 py-2 rounded-pill letter-spacing-1">PELUANG EMAS</span>
+            <h2 className="display-4 fw-bold text-white mb-4 line-height-sm">
               Jualannya Laris,<br />Cuan-nya <span className="text-red">Manissss…</span>
             </h2>
-            <div className="p-4 rounded-4 mb-5" style={{ background: 'var(--brand-red-glass)', borderLeft: '4px solid var(--brand-red)' }}>
-              <p className="fw-bold text-uppercase tracking-wider mb-2" style={{ color: 'var(--brand-red)' }}>
+            <div className="p-4 rounded-4 mb-5" style={{ background: 'rgba(211, 47, 47, 0.1)', borderLeft: '4px solid var(--brand-red)' }}>
+              <p className="fw-bold text-white text-uppercase tracking-wider mb-2" style={{ textShadow: '0 0 10px rgba(255,255,255,0.5)' }}>
                 PRODUK AUTOCARE JARINGAN NASIONAL
               </p>
-              <h3 className="fw-bold mb-3" style={{ color: 'var(--text-primary)' }}>
+              <h3 className="fw-bold text-red mb-3" style={{ textShadow: '0 0 15px rgba(211,47,47,0.8), 0 0 30px rgba(211,47,47,0.4)' }}>
                 MARGIN BESAR UP TO 30%
               </h3>
-              <p className="text-secondary mb-0">
+              <p className="text-white mb-0" style={{ textShadow: '0 0 8px rgba(255,255,255,0.3)', opacity: '0.9' }}>
                 Agioo & Mizu-X adalah brand dari PT JAYA MANDIRI VENTURES — perusahaan distribusi produk otomotif dengan jaringan retail nasional. Sekarang, siapa pun bisa ikut jualan produk fast-moving ini dengan potensi untung harian dan bonus bulanan yang langsung terasa.
               </p>
             </div>
-            <a href="https://wa.me/6282323244285?text=Halo%20JMV,%20saya%20tertarik%20membahas%20kemitraan%20dan%20margin%20grosir." target="_blank" rel="noopener noreferrer" className="btn-modern-red d-inline-flex align-items-center text-decoration-none">
+            <a href="https://wa.me/6282323244285?text=Halo%20JMV,%20saya%20tertarik%20membahas%20kemitraan%20dan%20margin%20grosir." target="_blank" rel="noopener noreferrer" className="btn-yellow-glow d-inline-flex align-items-center text-decoration-none">
               <i className="bi bi-chat-dots-fill me-2 fs-5"></i> Tanya-Tanya via Chat
             </a>
           </div>
@@ -179,36 +156,36 @@ const ValuePropositionBanner = () => {
           {/* Bagian Kanan: Fitur Grid */}
           <div className="col-lg-6">
             <div className="row g-4 align-items-stretch">
-              <div className="col-sm-6 fade-up delay-100">
-                <div className="p-4 rounded-4 h-100 shadow-sm" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
-                  <div className="bg-red text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '60px', height: '60px', fontSize: '1.5rem' }}>
+              <div className="col-sm-6" style={{ transitionDelay: '0.1s' }}>
+                <div className="p-4 rounded-4 h-100 stats-card">
+                  <div className="bg-red text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '60px', height: '60px', fontSize: '1.5rem', boxShadow: '0 0 15px rgba(211,47,47,0.6)' }}>
                     <i className="bi bi-car-front-fill"></i>
                   </div>
-                  <h5 className="fw-bold mb-2" style={{ color: 'var(--text-primary)' }}>Produk Autocare</h5>
-                  <p className="text-secondary small mb-0">Dipakai semua kendaraan harian.</p>
+                  <h5 className="text-white fw-bold mb-2">Produk Autocare</h5>
+                  <p className="text-secondary small mb-0">Dipakai untuk semua kendaraan harian.</p>
                 </div>
               </div>
-              <div className="col-sm-6 fade-up delay-200">
-                <div className="p-4 rounded-4 h-100 shadow-sm" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
-                  <div className="bg-red text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '60px', height: '60px', fontSize: '1.5rem' }}>
+              <div className="col-sm-6" style={{ transitionDelay: '0.2s' }}>
+                <div className="p-4 rounded-4 h-100 stats-card">
+                  <div className="bg-red text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '60px', height: '60px', fontSize: '1.5rem', boxShadow: '0 0 15px rgba(211,47,47,0.6)' }}>
                     <i className="bi bi-cash-coin"></i>
                   </div>
-                  <h5 className="fw-bold mb-2" style={{ color: 'var(--text-primary)' }}>Cuan Maksimal!!</h5>
+                  <h5 className="text-white fw-bold mb-2">Cuan Maksimal!!</h5>
                   <p className="text-secondary small mb-0">Dapatkan potensi keuntungan paling besar.</p>
                 </div>
               </div>
-              <div className="col-sm-6 fade-up delay-300">
-                <div className="p-4 rounded-4 h-100 shadow-sm" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
-                  <div className="bg-red text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '60px', height: '60px', fontSize: '1.5rem' }}>
+              <div className="col-sm-6" style={{ transitionDelay: '0.3s' }}>
+                <div className="p-4 rounded-4 h-100 stats-card">
+                  <div className="bg-red text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '60px', height: '60px', fontSize: '1.5rem', boxShadow: '0 0 15px rgba(211,47,47,0.6)' }}>
                     <i className="bi bi-gift-fill"></i>
                   </div>
-                  <h5 className="fw-bold mb-2" style={{ color: 'var(--text-primary)' }}>Bonus Langsung</h5>
+                  <h5 className="text-white fw-bold mb-2">Bonus Langsung</h5>
                   <p className="text-secondary small mb-0">Hadiahnya langsung diberikan tanpa diundi.</p>
                 </div>
               </div>
-              <div className="col-sm-6 fade-up delay-300">
-                <div className="p-4 rounded-4 h-100 d-flex flex-column justify-content-center text-center shadow-sm" style={{ background: 'linear-gradient(135deg, var(--brand-red) 0%, #a00000 100%)', border: '1px solid rgba(255,255,255,0.2)' }}>
-                  <h4 className="text-white fw-bold mb-3">HADIAH TANPA DIUNDI!</h4>
+              <div className="col-sm-6" style={{ transitionDelay: '0.4s' }}>
+                <div className="p-4 rounded-4 h-100 d-flex flex-column justify-content-center text-center stats-card" style={{ background: 'linear-gradient(135deg, var(--brand-red) 0%, #a00000 100%)', border: '1px solid rgba(255,255,255,0.2)', boxShadow: '0 0 25px rgba(211,47,47,0.6)' }}>
+                  <h4 className="text-white fw-bold mb-3" style={{ textShadow: '0 0 10px rgba(255,255,255,0.6)' }}>HADIAH TANPA DIUNDI!</h4>
                   <p className="text-white opacity-75 small mb-0">Voucher Pertamina, Logam Emas, Handphone, Motor & Mobil Traga</p>
                 </div>
               </div>
@@ -220,34 +197,295 @@ const ValuePropositionBanner = () => {
   );
 };
 
-// KOMPONEN JENIS KEMITRAAN (BARU)
+// KOMPONEN DATA STATISTIK JMV
+const StatsSection = () => {
+  const stats = [
+    { number: '30%', label: 'Margin Keuntungan', desc: 'Margin retail & grosir tinggi hingga 30% untuk keuntungan maksimal.', icon: 'bi-cash-coin' },
+    { number: '100%', label: 'Lulus Uji ASTM', desc: 'Cairan radiator teruji standar laboratorium internasional ASTM.', icon: 'bi-award-fill' },
+    { number: 'Nasional', label: 'Distribusi Retail', desc: 'Stok tersebar di Bright, Indomaret, Transmart, MUJ, dll.', icon: 'bi-buildings-fill' },
+    { number: '24/7', label: 'Support Kemitraan', desc: 'Pendampingan marketing, promo produk, dan armada logistik JMV.', icon: 'bi-headset' }
+  ];
+
+  return (
+    <section className="py-5 position-relative overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)', borderTop: '1px solid var(--border-color)' }}>
+      {/* Background ambient glow blob */}
+      <div className="ambient-glow-2" style={{ top: '10%', right: '5%' }}></div>
+      <div className="container py-5 position-relative z-1 reveal">
+        <div className="text-center mb-5">
+          <h6 className="text-red fw-bold text-uppercase tracking-wider mb-2">Mengapa Memilih Kami?</h6>
+          <h2 className="display-4 fw-bold text-white mb-3">JMV <span className="text-red">Dalam Angka</span></h2>
+          <p className="text-secondary lead mx-auto" style={{ maxWidth: '600px' }}>Kami menyediakan produk berkualitas tinggi didukung oleh ekosistem kemitraan yang kuat.</p>
+        </div>
+        <div className="row g-4">
+          {stats.map((st, idx) => (
+            <div className="col-lg-3 col-md-6" style={{ transitionDelay: `${idx * 0.15}s` }} key={idx}>
+              <div className="stats-card h-100">
+                <div className="bg-red text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '60px', height: '60px', fontSize: '1.5rem', boxShadow: '0 0 15px rgba(211,47,47,0.4)' }}>
+                  <i className={`bi ${st.icon}`}></i>
+                </div>
+                <div>
+                  <span className="stats-number">{st.number}</span>
+                  <h5 className="text-white fw-bold mb-2">{st.label}</h5>
+                  <p className="text-secondary small mb-0">{st.desc}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// KOMPONEN CAMPAIGN GALLERY & RUNNING POSTER
+const CampaignGallerySection = () => {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [lightboxImg, setLightboxImg] = useState(null);
+
+  const CAMPAIGN_POSTERS = [
+    {
+      id: 'hadiah',
+      title: 'Hadiah Langsung Tanpa Diundi',
+      subtitle: 'Program Reward Distributor JMV',
+      description: 'Dapatkan Voucher Pertamina, Logam Emas, HP, Motor, hingga Mobil Traga secara langsung tanpa perlu diundi! Setiap transaksi bernilai poin reward yang bisa langsung ditukar.',
+      image: '/assets/posters/poster-hadiah.jpg',
+      badge: 'Rewards & Bonus',
+      color: '#d32f2f',
+      waText: 'Halo JMV, saya ingin bertanya tentang Program Reward dan Hadiah Langsung untuk Distributor.'
+    },
+    {
+      id: 'armada',
+      title: 'Armada & Distribusi Non-Stop',
+      subtitle: 'Logistik Andalan Setiap Hari',
+      description: 'Didukung oleh sistem pergudangan modern dan jaringan pengiriman terintegrasi (motorist & armada truk) langsung ke bengkel, toko, dan retail mitra. Stok barang selalu terjamin aman.',
+      image: '/assets/posters/poster-armada.jpg',
+      badge: 'Logistik & Distribusi',
+      color: '#ff9800',
+      waText: 'Halo JMV, saya ingin tahu lebih lanjut mengenai dukungan Logistik dan Distribusi JMV.'
+    },
+    {
+      id: 'solusi',
+      title: 'Solusi Autocare Premium',
+      subtitle: 'Mizu-X & Agioo Performance',
+      description: 'Menyediakan lini produk car care harian teruji dengan margin keuntungan hingga 30%. Solusi perawatan kendaraan berkelas yang diminati oleh bengkel dan retail seluruh Indonesia.',
+      image: '/assets/posters/poster-solusi.jpg',
+      badge: 'Autocare & Car Care',
+      color: '#b71c1c',
+      waText: 'Halo JMV, saya tertarik menjadi distributor produk Autocare Mizu-X & Agioo.'
+    },
+    {
+      id: 'coolant',
+      title: 'Engine Coolant Berstandar ASTM',
+      subtitle: 'Pendinginan Optimal untuk Mesin',
+      description: 'Cairan radiator premium lulus uji ASTM internasional (D1120, D1170, D1384, D4340, D2809) yang memberikan perlindungan anti-karat dan mencegah overheat pada semua jenis kendaraan.',
+      image: '/assets/posters/poster-coolant.jpg',
+      badge: 'Radiator Coolant',
+      color: '#0d47a1',
+      waText: 'Halo JMV, saya ingin bertanya mengenai spesifikasi produk Radiator Coolant dan pembelian distributor.'
+    }
+  ];
+
+  const activePoster = CAMPAIGN_POSTERS[activeIdx];
+
+  const getDeckClass = (idx) => {
+    if (idx === activeIdx) return 'active';
+    const diff = (idx - activeIdx + CAMPAIGN_POSTERS.length) % CAMPAIGN_POSTERS.length;
+    if (diff === 1) return 'stack-1';
+    if (diff === 2) return 'stack-2';
+    return 'stack-3';
+  };
+
+  return (
+    <section className="campaign-section py-5" id="campaigns">
+      <div className="container py-5 reveal">
+        <div className="text-center mb-5">
+          <h6 className="text-red fw-bold text-uppercase tracking-wider mb-2">Program Unggulan</h6>
+          <h2 className="display-4 fw-bold text-white mb-3">Distributor <span className="text-red">Campaigns</span></h2>
+          <p className="text-secondary lead mx-auto" style={{ maxWidth: '600px' }}>Lihat berbagai penawaran, dukungan logistik, dan reward menarik dari JMV. Klik atau hover poster untuk detail lengkap.</p>
+        </div>
+
+        <div className="row align-items-center g-5 mb-5">
+          {/* Kiri: Detail Text */}
+          <div className="col-lg-6">
+            <div key={activeIdx} className="animate-detail">
+              <span className="badge px-3 py-2 rounded-pill fw-bold mb-3" style={{ background: activePoster.color }}>
+                {activePoster.badge}
+              </span>
+              <h5 className="text-secondary text-uppercase tracking-wider mb-2" style={{ fontSize: '0.9rem' }}>{activePoster.subtitle}</h5>
+              <h2 className="display-5 fw-bold text-white mb-4">{activePoster.title}</h2>
+              <p className="text-secondary fs-5 mb-5 line-height-lg" style={{ minHeight: '120px' }}>
+                {activePoster.description}
+              </p>
+              <div className="d-flex flex-wrap gap-3">
+                <a
+                  href={`https://wa.me/6282323244285?text=${encodeURIComponent(activePoster.waText)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-modern-red text-decoration-none d-inline-flex align-items-center"
+                >
+                  <i className="bi bi-whatsapp me-2"></i> Tanya Program Ini
+                </a>
+                <button
+                  onClick={() => setLightboxImg(activePoster)}
+                  className="btn-modern-outline d-inline-flex align-items-center text-white"
+                >
+                  <i className="bi bi-zoom-in me-2"></i> Zoom Poster
+                </button>
+              </div>
+            </div>
+            
+            {/* Indicators */}
+            <div className="d-flex gap-2 mt-5">
+              {CAMPAIGN_POSTERS.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveIdx(idx)}
+                  className="border-0 rounded-pill transition"
+                  style={{
+                    width: idx === activeIdx ? '35px' : '10px',
+                    height: '10px',
+                    backgroundColor: idx === activeIdx ? 'var(--brand-red)' : 'rgba(255,255,255,0.2)',
+                  }}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Kanan: Interactive 3D Card Stack */}
+          <div className="col-lg-6">
+            <div className="poster-deck-wrapper">
+              <div className="poster-deck">
+                {CAMPAIGN_POSTERS.map((poster, idx) => (
+                  <div
+                    key={poster.id}
+                    className={`poster-card-3d ${getDeckClass(idx)}`}
+                    onClick={() => setActiveIdx(idx)}
+                  >
+                    <img src={poster.image} alt={poster.title} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Running Poster Marquee */}
+      <div className="poster-marquee-container reveal">
+        <div className="poster-marquee-track">
+          {[...CAMPAIGN_POSTERS, ...CAMPAIGN_POSTERS].map((poster, idx) => (
+            <div
+              key={`${poster.id}-${idx}`}
+              className="poster-marquee-item"
+              onClick={() => setLightboxImg(poster)}
+            >
+              <img src={poster.image} alt={poster.title} />
+              <div className="poster-marquee-overlay">
+                <i className="bi bi-zoom-in"></i>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Glassmorphic Lightbox Overlay */}
+      {lightboxImg && (
+        <div className="lightbox-backdrop active" onClick={() => setLightboxImg(null)}>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={() => setLightboxImg(null)}>
+              <i className="bi bi-x-lg"></i>
+            </button>
+            <div className="lightbox-body">
+              <img src={lightboxImg.image} alt={lightboxImg.title} className="lightbox-img" />
+            </div>
+            <div className="lightbox-footer">
+              <div>
+                <h4 className="text-white fw-bold mb-1">{lightboxImg.title}</h4>
+                <p className="text-secondary small mb-0">{lightboxImg.subtitle}</p>
+              </div>
+              <a
+                href={`https://wa.me/6282323244285?text=${encodeURIComponent(lightboxImg.waText)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-modern-red text-decoration-none px-4 py-2"
+                style={{ fontSize: '0.9rem' }}
+              >
+                <i className="bi bi-whatsapp me-2"></i> Hubungi Sales
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
+
+// KOMPONEN JENIS KEMITRAAN
 const PartnershipTypes = () => {
   return (
-    <section className="py-5" style={{ backgroundColor: 'var(--bg-primary)' }} id="partnership-types">
-      <div className="container py-5">
-        <div className="text-center mb-5 fade-up">
-          <h2 className="display-4 fw-bold" style={{ color: 'var(--text-primary)' }}>Program <span className="text-red">Kemitraan</span></h2>
+    <section id="partnership-types" className="py-5" style={{ backgroundColor: 'var(--bg-primary)', borderTop: '1px solid var(--border-color)' }}>
+      <div className="container py-5 reveal">
+        <div className="text-center mb-5">
+          <h6 className="text-red fw-bold text-uppercase tracking-wider mb-2">Program Kemitraan</h6>
+          <h2 className="display-4 fw-bold text-white mb-3">Jenis <span className="text-red">Kemitraan JMV</span></h2>
+          <p className="text-secondary lead mx-auto mb-5" style={{ maxWidth: '600px' }}>Pilih jenis kemitraan yang paling sesuai dengan kapasitas bisnis Anda. Kami mendukung pertumbuhan Anda dari awal.</p>
         </div>
         <div className="row g-4 justify-content-center">
-          <div className="col-lg-4 col-md-6 fade-up delay-100">
-            <div className="partnership-card text-center">
-              <i className="bi bi-building text-red fs-1 mb-3 d-block"></i>
-              <h3 className="fw-bold mb-3" style={{ color: 'var(--text-primary)' }}>Distributor</h3>
-              <p className="text-secondary fw-bold fs-5">Untuk Pengambilan IDR 75 Juta Keatas</p>
+          <div className="col-lg-3 col-md-6" style={{ transitionDelay: '0.1s' }}>
+            <div className="trust-badge d-flex flex-column h-100 p-4 justify-content-between">
+              <div>
+                <i className="bi bi-building text-red fs-1 mb-3 d-block"></i>
+                <h3 className="fw-bold text-white mb-2" style={{ fontSize: '1.4rem' }}>Distributor</h3>
+                <p className="text-secondary small mb-3">Pengambilan IDR 75 Juta ke atas.</p>
+              </div>
+              <ul className="list-unstyled text-secondary small text-start my-3 flex-grow-1">
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Margin Keuntungan 30%</li>
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Proteksi Area Distribusi</li>
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Hadiah Langsung Tanpa Diundi</li>
+              </ul>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6 fade-up delay-200">
-            <div className="partnership-card text-center">
-              <i className="bi bi-star-fill text-red fs-1 mb-3 d-block"></i>
-              <h3 className="fw-bold mb-3" style={{ color: 'var(--text-primary)' }}>Reseller</h3>
-              <p className="text-secondary fw-bold fs-5">Untuk Pengambilan IDR 75 Juta Kebawah</p>
+          <div className="col-lg-3 col-md-6" style={{ transitionDelay: '0.2s' }}>
+            <div className="trust-badge d-flex flex-column h-100 p-4 justify-content-between">
+              <div>
+                <i className="bi bi-star-fill text-red fs-1 mb-3 d-block"></i>
+                <h3 className="fw-bold text-white mb-2" style={{ fontSize: '1.4rem' }}>Reseller</h3>
+                <p className="text-secondary small mb-3">Pengambilan IDR 75 Juta ke bawah.</p>
+              </div>
+              <ul className="list-unstyled text-secondary small text-start my-3 flex-grow-1">
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Tanpa Syarat Minimum PT/CV</li>
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Produk Fast-Moving Harian</li>
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Akses Aset Pemasaran & Foto</li>
+              </ul>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6 fade-up delay-300">
-            <div className="partnership-card text-center">
-              <i className="bi bi-boxes text-red fs-1 mb-3 d-block"></i>
-              <h3 className="fw-bold mb-3" style={{ color: 'var(--text-primary)' }}>Special Orders</h3>
-              <p className="text-secondary fw-bold fs-5">Layanan maklon B2B, OEM, dan kebutuhan formulasi kimia khusus.</p>
+          <div className="col-lg-3 col-md-6" style={{ transitionDelay: '0.3s' }}>
+            <div className="trust-badge d-flex flex-column h-100 p-4 justify-content-between">
+              <div>
+                <i className="bi bi-person-lines-fill text-red fs-1 mb-3 d-block"></i>
+                <h3 className="fw-bold text-white mb-2" style={{ fontSize: '1.4rem' }}>Mitra Feeder</h3>
+                <p className="text-secondary small mb-3">Sistem komisi / referral per PO.</p>
+              </div>
+              <ul className="list-unstyled text-secondary small text-start my-3 flex-grow-1">
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Komisi 1.5% (Personal)</li>
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Komisi 5% (Perusahaan PT/CV)</li>
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Tanpa Modal & Stok Barang</li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-lg-3 col-md-6" style={{ transitionDelay: '0.4s' }}>
+            <div className="trust-badge d-flex flex-column h-100 p-4 justify-content-between">
+              <div>
+                <i className="bi bi-boxes text-red fs-1 mb-3 d-block"></i>
+                <h3 className="fw-bold text-white mb-2" style={{ fontSize: '1.4rem' }}>B2B / Maklon</h3>
+                <p className="text-secondary small mb-3">Produksi khusus & merek sendiri.</p>
+              </div>
+              <ul className="list-unstyled text-secondary small text-start my-3 flex-grow-1">
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Formulasi Kustom Kimia Autocare</li>
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Labeling & Pengemasan OEM</li>
+                <li className="mb-2"><i className="bi bi-check-circle-fill text-red me-2"></i> Legalitas & Sertifikasi ASTM</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -281,30 +519,28 @@ Pesan: ${formData.message}`;
 
   return (
     <section id="partnership" className="py-5" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)' }}>
-      <div className="container py-5">
-        <div className="text-center mb-5 fade-up">
-          <h2 className="display-5 fw-bold mb-3" style={{ color: 'var(--text-primary)' }}>Tertarik Jadi <span className="text-red">Distributor?</span></h2>
+      <div className="container py-5 reveal">
+        <div className="text-center mb-5">
+          <h2 className="display-5 fw-bold text-white mb-3">Tertarik Jadi <span className="text-red">Distributor?</span></h2>
           <p className="lead text-secondary">Penawaran eksklusif ini khusus untuk perusahaan berbadan hukum PT / CV.</p>
         </div>
         <div className="row justify-content-center">
-          <div className="col-lg-8 fade-up delay-100">
-            <div className="p-4 p-md-5 rounded-4 form-modern-light shadow-sm" style={{ border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)' }}>
-              <h4 className="fw-bold mb-4 text-center" style={{ color: 'var(--text-primary)' }}>Isi Form Singkat di Bawah Ini</h4>
-              <form onSubmit={handleSubmit}>
+          <div className="col-lg-8">
+            <div className="glass-panel p-4 p-md-5 rounded-4 border-red shadow-lg" style={{ borderWidth: '1px', borderStyle: 'solid' }}>
+              <h4 className="fw-bold mb-4 text-center text-white">Isi Form Singkat di Bawah Ini</h4>
+              <form className="form-modern-dark" onSubmit={handleSubmit}>
                 <div className="row g-4 mb-4">
                   <div className="col-md-6">
-                    <label className="form-label">Nama Depan *</label>
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Nama Depan"
+                      placeholder="Nama Depan *"
                       value={formData.firstName}
                       onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                       required
                     />
                   </div>
                   <div className="col-md-6">
-                    <label className="form-label">Nama Belakang</label>
                     <input
                       type="text"
                       className="form-control"
@@ -316,22 +552,20 @@ Pesan: ${formData.message}`;
                 </div>
                 <div className="row g-4 mb-4">
                   <div className="col-md-6">
-                    <label className="form-label">Nomor Telp Kantor / Toko *</label>
                     <input
                       type="tel"
                       className="form-control"
-                      placeholder="Nomor Telp"
+                      placeholder="Nomor Telp Kantor / Toko *"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       required
                     />
                   </div>
                   <div className="col-md-6">
-                    <label className="form-label">Email Perusahaan *</label>
                     <input
                       type="email"
                       className="form-control"
-                      placeholder="Email"
+                      placeholder="Email Perusahaan *"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
@@ -339,28 +573,26 @@ Pesan: ${formData.message}`;
                   </div>
                 </div>
                 <div className="mb-4">
-                  <label className="form-label">Nama Usaha * (Contoh: CV. Bengkel Mitra Sejati)</label>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Nama Usaha"
+                    placeholder="Nama Usaha * (Contoh: CV. Bengkel Mitra Sejati)"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     required
                   />
                 </div>
                 <div className="mb-4">
-                  <label className="form-label">Pesan Tambahan (Opsional)</label>
                   <textarea
                     className="form-control"
                     rows="3"
-                    placeholder="Tulis pesan Anda..."
+                    placeholder="Pesan Tambahan (Opsional)"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   ></textarea>
                 </div>
                 <div className="text-center mt-5">
-                  <button type="submit" className="btn-modern-red w-100 text-uppercase letter-spacing-1">
+                  <button type="submit" className="btn-modern-red w-100 text-uppercase letter-spacing-1 shadow-lg" style={{ padding: '16px 20px', borderRadius: '50px' }}>
                     <i className="bi bi-whatsapp me-2"></i> Kirim Penawaran via WhatsApp
                   </button>
                 </div>
@@ -373,7 +605,93 @@ Pesan: ${formData.message}`;
   );
 };
 
-// KOMPONEN TESTIMONI DAN PARTNER (BARU)
+// KOMPONEN PRODUCT SHOWCASE (CARD GRID + FLIP + DETAIL)
+const CreativeProductShowcase = ({ onSelectProduct, products, selectedBrand, setSelectedBrand }) => {
+  const brands = ['all', 'Mizu-X', 'Agioo'];
+
+  return (
+    <section id="services" className="py-5" style={{ backgroundColor: '#0a0a0a', borderTop: '1px solid var(--border-color)' }}>
+      <div className="container py-5 reveal">
+        <div className="text-center mb-5">
+          <h6 className="text-red fw-bold text-uppercase mb-2">Katalog Produk</h6>
+          <h2 className="display-5 fw-bold text-white mb-3">Our <span className="text-red">Premium Brands</span></h2>
+          <p className="text-secondary lead">Pilih brand di bawah atau gunakan kolom pencarian di navigasi untuk memfilter produk.</p>
+        </div>
+
+        {/* Brand tabs filter */}
+        <div className="d-flex justify-content-center gap-3 mb-5 flex-wrap">
+          {brands.map((br) => (
+            <button
+              key={br}
+              onClick={() => setSelectedBrand(br)}
+              className={`brand-tab-btn ${selectedBrand === br ? 'active' : ''}`}
+            >
+              {br === 'all' ? 'Semua Brand' : br}
+            </button>
+          ))}
+        </div>
+
+        <div className="row g-4">
+          {products.length === 0 ? (
+            <div className="col-12 text-center py-5">
+              <p className="text-secondary fs-5">Tidak ada produk yang cocok dengan pencarian Anda.</p>
+            </div>
+          ) : (
+            products.map((prod, idx) => (
+              <div className="col-lg-4 col-md-6" style={{ transitionDelay: `${idx * 0.05}s` }} key={prod.id}>
+                <div className="flip-card" onClick={() => onSelectProduct(prod.id)}>
+                  <div className="flip-card-inner">
+                    {/* FRONT - Real Product Image */}
+                    <div className="flip-card-front">
+                      <div className="position-relative h-100" style={{ borderRadius: '20px', overflow: 'hidden', background: '#111' }}>
+                        <img
+                          src={prod.image}
+                          alt={prod.name}
+                          style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', padding: '20px' }}
+                        />
+                        <div className="position-absolute bottom-0 start-0 end-0 p-3" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, transparent 100%)' }}>
+                          <span className="badge px-2 py-1 rounded-pill fw-bold mb-1 small d-inline-block" style={{ background: prod.brandColor }}>{prod.brand}</span>
+                          <h5 className="fw-bold text-white mb-1" style={{ fontSize: '0.95rem' }}>{prod.name}</h5>
+                          <p className="text-secondary mb-0" style={{ fontSize: '0.75rem' }}>
+                            <i className="bi bi-arrow-repeat me-1"></i>Hover untuk lihat detail
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    {/* BACK - Features + CTA */}
+                    <div className="flip-card-back" style={{ background: `linear-gradient(135deg, ${prod.brandColor}dd 0%, ${prod.brandColor} 100%)`, borderRadius: '20px' }}>
+                      <div className="d-flex flex-column h-100 p-4 text-start">
+                        <h5 className="fw-bold text-white mb-1">{prod.name}</h5>
+                        <span className="badge bg-white text-dark mb-3 align-self-start px-2 py-1 small">{prod.brand}</span>
+                        <p className="text-white small mb-3" style={{ fontStyle: 'italic', opacity: 0.9 }}>{prod.description}</p>
+                        <ul className="list-unstyled text-white flex-grow-1 mb-4">
+                          {prod.specs.slice(0, 3).map((spec, i) => (
+                            <li key={i} className="mb-2 d-flex align-items-start">
+                              <i className="bi bi-check-circle-fill me-2 mt-1 flex-shrink-0" style={{ fontSize: '0.85rem' }}></i>
+                              <span className="small text-start">{spec}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <button
+                          className="w-100 py-2 fw-bold rounded-pill border-0 text-dark"
+                          style={{ background: '#fff', boxShadow: '0 4px 15px rgba(0,0,0,0.3)', cursor: 'pointer' }}
+                        >
+                          <i className="bi bi-arrow-right-circle me-2"></i>Cek Detail Lengkap
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// KOMPONEN TESTIMONI DAN PARTNER
 const TestimonialSection = () => {
   const testimonials = [
     { text: "I'm very satisfied with Mizu-X products. They keep my vehicle clean and well-maintained, and on top of that, they're eco-friendly.", name: "Mrs. Tabitha Sumendap", title: "Founder of Woman Cycling Club Indonesia" },
@@ -384,44 +702,44 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <section className="py-5 overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)' }}>
+    <section className="py-5 overflow-hidden" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
       {/* Marquee Partners */}
-      <div className="poster-marquee-container mb-5">
-        <div className="poster-marquee-track">
+      <div className="marquee-container mb-5 reveal">
+        <div className="marquee-content">
           <span className="partner-logo-text">PERTAMINA</span>
           <span className="partner-logo-text">MUJ</span>
           <span className="partner-logo-text text-primary">ENM</span>
-          <span className="partner-logo-text text-danger">DKSH</span>
+          <span className="partner-logo-text text-red">DKSH</span>
           <span className="partner-logo-text text-success">SAI</span>
-          <span className="partner-logo-text text-info">BENE DIGITAL</span>
-          <span className="partner-logo-text text-danger">BRIGHT BY ALFAMART</span>
-          {/* Duplicate for infinite marquee */}
+          <span className="partner-logo-text text-info">bene digital</span>
+          <span className="partner-logo-text text-danger">bright by Alfamart</span>
+          {/* Duplicate for infinite effect */}
           <span className="partner-logo-text">PERTAMINA</span>
           <span className="partner-logo-text">MUJ</span>
           <span className="partner-logo-text text-primary">ENM</span>
-          <span className="partner-logo-text text-danger">DKSH</span>
+          <span className="partner-logo-text text-red">DKSH</span>
           <span className="partner-logo-text text-success">SAI</span>
-          <span className="partner-logo-text text-info">BENE DIGITAL</span>
-          <span className="partner-logo-text text-danger">BRIGHT BY ALFAMART</span>
+          <span className="partner-logo-text text-info">bene digital</span>
+          <span className="partner-logo-text text-danger">bright by Alfamart</span>
         </div>
       </div>
 
-      <div className="container py-5">
-        <div className="text-center mb-5 fade-up">
+      <div className="container py-5 reveal">
+        <div className="text-center mb-5">
           <h6 className="text-red fw-bold text-uppercase mb-2">Testimoni</h6>
-          <h2 className="display-5 fw-bold mb-3" style={{ color: 'var(--text-primary)' }}>Happy <span className="text-red">Clients & Partners</span></h2>
+          <h2 className="display-5 fw-bold text-white mb-3">Happy <span className="text-red">Clients & Partners</span></h2>
           <p className="text-secondary lead">Apa kata mereka tentang produk JMV?</p>
         </div>
         <div className="row g-4 justify-content-center">
           {testimonials.map((testi, idx) => (
-            <div className="col-lg-4 col-md-6 fade-up" style={{ animationDelay: `${idx * 0.1}s` }} key={idx}>
-              <div className="testimonial-card d-flex flex-column">
+            <div className="col-lg-4 col-md-6" style={{ transitionDelay: `${idx * 0.1}s` }} key={idx}>
+              <div className="testimonial-card d-flex flex-column text-start">
                 <div className="mb-4 text-warning">
                   <i className="bi bi-star-fill"></i><i className="bi bi-star-fill"></i><i className="bi bi-star-fill"></i><i className="bi bi-star-fill"></i><i className="bi bi-star-fill"></i>
                 </div>
                 <p className="text-secondary fs-6 mb-4 flex-grow-1" style={{ fontStyle: 'italic' }}>"{testi.text}"</p>
                 <div>
-                  <h6 className="fw-bold mb-1" style={{ color: 'var(--text-primary)' }}>{testi.name}</h6>
+                  <h6 className="text-white fw-bold mb-1">{testi.name}</h6>
                   <p className="text-red small mb-0 fw-bold">{testi.title}</p>
                 </div>
               </div>
@@ -433,7 +751,92 @@ const TestimonialSection = () => {
   );
 };
 
-// KOMPONEN TOMBOL WHATSAPP MELAYANG
+// KOMPONEN PETA GOOGLE MAPS & INFO KANTOR JMV
+const MapSection = () => {
+  return (
+    <section id="map-section" className="py-5 position-relative overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)', borderTop: '1px solid var(--border-color)' }}>
+      {/* Decorative ambient glows */}
+      <div className="ambient-glow" style={{ top: '20%', left: '5%' }}></div>
+      <div className="ambient-glow-2" style={{ bottom: '10%', right: '5%' }}></div>
+
+      <div className="container py-5 position-relative z-1 reveal">
+        <div className="text-center mb-5">
+          <h6 className="text-red fw-bold text-uppercase tracking-wider mb-2">Hubungi Kami</h6>
+          <h2 className="display-4 fw-bold text-white mb-3">Lokasi & <span className="text-red">Rute Kantor</span></h2>
+          <p className="text-secondary lead mx-auto" style={{ maxWidth: '600px' }}>Temukan letak kantor PT Jaya Mandiri Ventures dan klik tombol rute untuk navigasi instan lewat Google Maps.</p>
+        </div>
+
+        <div className="row g-4 align-items-stretch">
+          {/* Info Kantor & CTA Rute */}
+          <div className="col-lg-5">
+            <div className="map-control-panel rounded-4 h-100 border border-secondary text-start d-flex flex-column justify-content-between" style={{ background: 'rgba(20, 20, 20, 0.6)', backdropFilter: 'blur(10px)', minHeight: '400px' }}>
+              <div>
+                <span className="badge bg-red mb-3 px-3 py-2 rounded-pill letter-spacing-1">HEADQUARTERS</span>
+                <h3 className="text-white fw-bold mb-4">PT Jaya Mandiri Ventures</h3>
+                
+                <div className="mb-4">
+                  <h6 className="text-red text-uppercase small fw-bold mb-2">Alamat Kantor:</h6>
+                  <p className="text-secondary mb-0" style={{ lineHeight: '1.6', fontSize: '0.95rem' }}>
+                    Gedung SOHO Pancoran, Lt. 28, Suite 2801<br />
+                    Jl. Letjen M.T. Haryono Kav. 2-3, RT.3/RW.3, Tebet Barat, Kec. Tebet,<br />
+                    Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810, Indonesia.
+                  </p>
+                </div>
+
+                <div className="mb-4">
+                  <h6 className="text-red text-uppercase small fw-bold mb-2">Kontak Hubung:</h6>
+                  <p className="text-secondary mb-1" style={{ fontSize: '0.95rem' }}>
+                    <i className="bi bi-envelope-fill me-2 text-white opacity-50"></i> admin@jmv.co.id
+                  </p>
+                  <p className="text-secondary mb-0" style={{ fontSize: '0.95rem' }}>
+                    <i className="bi bi-telephone-fill me-2 text-white opacity-50"></i> +62 823-2324-4285
+                  </p>
+                </div>
+
+                <div className="mb-4">
+                  <h6 className="text-red text-uppercase small fw-bold mb-2">Jam Operasional:</h6>
+                  <p className="text-secondary mb-0" style={{ fontSize: '0.95rem' }}>
+                    <i className="bi bi-clock-fill me-2 text-white opacity-50"></i> Senin - Jumat: 08:30 - 17:00 WIB
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-4 pt-3 border-top border-secondary">
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=-6.242389,106.845244"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-modern-red w-100 text-center text-decoration-none d-inline-flex align-items-center justify-content-center"
+                  style={{ borderRadius: '30px', padding: '14px 20px', fontWeight: '600' }}
+                >
+                  <i className="bi bi-map-fill me-2"></i> Buka Navigasi Rute di Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Google Maps Embedded Map */}
+          <div className="col-lg-7">
+            <div className="map-card h-100 position-relative overflow-hidden" style={{ minHeight: '400px', border: '1px solid var(--border-color)' }}>
+              <iframe
+                title="Google Maps JMV Office"
+                src="https://maps.google.com/maps?q=-6.242389,106.845244&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '400px', display: 'block' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// KOMPONEN TOMBOL WHATSAPP
 const FloatingWhatsApp = () => {
   return (
     <a
@@ -453,9 +856,28 @@ function App() {
   const [selectedProductId, setSelectedProductId] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
-  const [lightboxImage, setLightboxImage] = useState(null);
 
-  // Auto-filtering logic
+  // Intersection Observer scroll reveal hook
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      revealElements.forEach((el) => observer.unobserve(el));
+    };
+  }, [selectedProductId]); // Re-observe when UI view toggles between Home & Details
+
   const filteredProducts = useMemo(() => {
     return PRODUCT_DATA.filter((product) => {
       const matchesSearch =
@@ -470,15 +892,6 @@ function App() {
     });
   }, [searchQuery, selectedBrand]);
 
-  const brandCounts = useMemo(() => {
-    const counts = { all: PRODUCT_DATA.length };
-    PRODUCT_DATA.forEach(p => {
-      const b = p.brand.toLowerCase();
-      counts[b] = (counts[b] || 0) + 1;
-    });
-    return counts;
-  }, []);
-
   const handleSearchChange = (e) => {
     const val = e.target.value;
     setSearchQuery(val);
@@ -490,14 +903,203 @@ function App() {
     }
   };
 
-  const activeProduct = useMemo(() => {
-    return PRODUCT_DATA.find(p => p.id === selectedProductId);
-  }, [selectedProductId]);
+  const renderContent = () => {
+    if (selectedProductId) {
+      const product = PRODUCT_DATA.find(p => p.id === selectedProductId);
+      return (
+        <div className="container py-5 mt-5 reveal">
+          <div className="row align-items-center mt-5">
+            <div className="col-lg-6 mb-4 text-center">
+              <img src={product.image} className="img-fluid rounded-4 shadow-lg border border-dark" alt={product.name} style={{ maxHeight: '450px', objectFit: 'contain' }} />
+            </div>
+            <div className="col-lg-6 px-lg-5 text-start">
+              <span className="badge bg-red mb-3 fs-6 px-3 py-2 rounded-pill">{product.brand}</span>
+              <h2 className="fw-bold display-4 text-white mb-3">{product.name}</h2>
+              <p className="lead text-secondary mb-5">{product.description}</p>
+
+              <h5 className="fw-bold text-white mb-3 d-flex align-items-center">
+                <i className="bi bi-star-fill text-red me-2"></i> Kelebihan Utama:
+              </h5>
+              <ul className="list-group list-group-flush mb-5 bg-transparent">
+                {product.specs.map((spec, index) => (
+                  <li key={index} className="list-group-item bg-transparent text-secondary px-0 border-secondary d-flex align-items-center">
+                    <i className="bi bi-check2-circle text-red fs-5 me-3"></i> {spec}
+                  </li>
+                ))}
+              </ul>
+              <div className="d-flex gap-3">
+                <a
+                  href={`https://wa.me/6282323244285?text=Halo%20JMV,%20saya%20tertarik%20bertanya%20mengenai%20grosir%20untuk%20produk%20${encodeURIComponent(product.name)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-modern-red text-decoration-none text-center d-inline-flex align-items-center"
+                >
+                  <i className="bi bi-whatsapp me-2"></i> Hubungi Sales
+                </a>
+                <button onClick={() => setSelectedProductId(null)} className="btn-modern-outline text-white">
+                  <i className="bi bi-arrow-left me-2"></i> Kembali ke Beranda
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <main>
+        {/* HERO SECTION */}
+        <section id="hero" className="hero-section">
+          {/* Ambient Glows */}
+          <div className="ambient-glow" style={{ top: '10%', left: '10%' }}></div>
+          <div className="ambient-glow-2" style={{ bottom: '20%', right: '15%' }}></div>
+
+          <img src="/hero-bg.jpg" className="hero-bg-image" alt="Mizu-X Agioo Background" />
+          <div className="hero-overlay"></div>
+
+          <div className="container hero-content text-center reveal pb-5">
+            <span className="badge bg-transparent border border-red text-red rounded-pill px-3 py-2 mb-4 fw-bold letter-spacing-1">AUTOCARE PRINCIPAL</span>
+            <h1 className="display-3 fw-bold text-white mb-4">
+              Kita Bantu Buang Barang Melalui <br /><span className="text-red">Program-Program Penjualan</span>
+            </h1>
+            <p className="fs-5 text-secondary mb-5 max-w-700 mx-auto" style={{ maxWidth: '700px' }}>
+              Penawaran ini hanya untuk perusahaan berbadan hukum PT / CV. Jualannya Laris, Cuan-nya Manissss… Produk Autocare dengan Jaringan Nasional, Margin Besar Up TO 30%.
+            </p>
+
+            <div className="d-flex gap-3 justify-content-center mb-5">
+              <a href="#services" className="btn-modern-red text-decoration-none">Cari & Telusuri Produk</a>
+              <a href="#partnership" className="btn-modern-outline text-decoration-none text-white">Daftar Distributor Resmi</a>
+            </div>
+
+            <div className="row gy-4 mt-5 justify-content-center">
+              <div className="col-md-4 d-flex" style={{ transitionDelay: '0.1s' }}>
+                <div className="trust-badge d-flex flex-column w-100">
+                  <i className="bi bi-award-fill icon-main"></i>
+                  <h4 className="fw-bold text-white mb-2">Lolos Uji ASTM</h4>
+                  <p className="text-secondary small mb-3 border-bottom border-secondary pb-2">American Standard Testing and Material</p>
+                  <ul className="list-unstyled text-secondary small text-start ps-3 mb-0 flex-grow-1">
+                    <li className="mb-1"><i className="bi bi-check text-red fs-5 me-1 align-middle"></i> ASTM D1120 (Titik Didih)</li>
+                    <li className="mb-1"><i className="bi bi-check text-red fs-5 me-1 align-middle"></i> ASTM D1170 (Titik Beku)</li>
+                    <li className="mb-1"><i className="bi bi-check text-red fs-5 me-1 align-middle"></i> ASTM D1384, D4340, D2809</li>
+                  </ul>
+                  <p className="text-secondary small mt-3 pt-2 border-top border-secondary mb-0">(Perlindungan terhadap Karat dan Korosi)</p>
+                </div>
+              </div>
+              <div className="col-md-4 d-flex" style={{ transitionDelay: '0.2s' }}>
+                <div className="trust-badge d-flex flex-column w-100">
+                  <i className="bi bi-shield-check icon-main"></i>
+                  <h4 className="fw-bold text-white mb-3">Semua Jenis Kendaraan</h4>
+                  <p className="text-secondary mb-4 flex-grow-1">Formula kimia dirancang aman dan optimal untuk perawatan mesin, radiator, kaca, dan bodi mobil maupun motor (yang menggunakan radiator).</p>
+                </div>
+              </div>
+              <div className="col-md-4 d-flex" style={{ transitionDelay: '0.3s' }}>
+                <div className="trust-badge d-flex flex-column w-100">
+                  <i className="bi bi-buildings icon-main"></i>
+                  <h4 className="fw-bold text-white mb-3">Suplai Retail Nasional</h4>
+                  <p className="text-secondary mb-3 flex-grow-1">Suplier tepercaya jaringan retail terkemuka di Indonesia.</p>
+                  <p className="text-secondary small mt-auto mb-0" style={{ fontSize: '0.75rem' }}>(Tersedia di Bright by Pertamina, Bright by Alfamart, Indomaret, Transmart, MUJ, dll.)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* VALUE PROPOSITION RED BANNER */}
+        <ValuePropositionBanner />
+
+        {/* ABOUT SECTION */}
+        <section id="about" className="py-5 position-relative overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)' }}>
+          {/* Ambient Glows */}
+          <div className="ambient-glow" style={{ bottom: '10%', right: '5%' }}></div>
+          <div className="ambient-glow-2" style={{ top: '10%', left: '5%' }}></div>
+
+          <div className="container py-5 reveal">
+            <div className="row align-items-center">
+              <div className="col-lg-5 mb-5 mb-lg-0 text-center">
+                <div className="position-relative">
+                  <div className="bg-red rounded-circle position-absolute" style={{ width: '300px', height: '300px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', filter: 'blur(80px)', opacity: '0.2' }}></div>
+                  <div className="position-relative z-1">
+                    <img src="/logo-jmv.png" alt="JMV Logo" className="img-fluid" style={{ maxHeight: '200px' }} />
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-7 px-lg-5 text-start">
+                <h6 className="text-red fw-bold text-uppercase tracking-wider mb-2">Tentang Perusahaan</h6>
+                <h3 className="fw-bold text-white display-6 mb-4">PT Jaya Mandiri Ventures</h3>
+                <p className="text-secondary fs-5 mb-4 line-height-lg">
+                  JMV adalah perusahaan yang fokus pada pengembangan produk berkualitas premium dan mendistribusikannya melalui jaringan retail berskala nasional. Kami berkomitmen memberikan yang terbaik untuk performa kendaraan Anda.
+                </p>
+                <div className="d-flex flex-column gap-3">
+                  <div className="d-flex align-items-center p-3 rounded-3" style={{ backgroundColor: 'var(--bg-secondary)', borderLeft: '4px solid var(--brand-red)' }}>
+                    <i className="bi bi-award fs-3 text-red me-3"></i>
+                    <div>
+                      <h6 className="text-white fw-bold mb-1">Prinsipal Resmi</h6>
+                      <p className="text-secondary mb-0 small">Pemegang merek Agioo, Mizu-X, dan Bio Luminex.</p>
+                    </div>
+                  </div>
+                  <div className="d-flex align-items-center p-3 rounded-3" style={{ backgroundColor: 'var(--bg-secondary)', borderLeft: '4px solid var(--brand-red)' }}>
+                    <i className="bi bi-truck fs-3 text-red me-3"></i>
+                    <div>
+                      <h6 className="text-white fw-bold mb-1">Distribusi Nasional</h6>
+                      <p className="text-secondary mb-0 small">Menjangkau seluruh wilayah Indonesia dengan sistem terintegrasi.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* B2B CHANNELS */}
+        <section className="py-5" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+          <div className="container text-center reveal">
+            <p className="text-secondary mb-4 fw-bold letter-spacing-1 text-uppercase">Tersedia di Jaringan Retail & B2B Channels:</p>
+            <div className="d-flex flex-wrap justify-content-center gap-4 gap-md-5 fs-3 fw-bold text-white opacity-50">
+              <span className="hover-opacity-100 transition">DAIHATSU</span>
+              <span className="hover-opacity-100 transition">ISUZU</span>
+              <span className="hover-opacity-100 transition">DAMRI</span>
+              <span className="hover-opacity-100 transition">JAK LINGKO</span>
+            </div>
+          </div>
+        </section>
+
+        {/* STATS SECTION */}
+        <StatsSection />
+
+        {/* BONUS SECTION */}
+        <BonusSection />
+
+        {/* CREATIVE PRODUCT SHOWCASE */}
+        <CreativeProductShowcase
+          onSelectProduct={setSelectedProductId}
+          products={filteredProducts}
+          selectedBrand={selectedBrand}
+          setSelectedBrand={setSelectedBrand}
+        />
+
+        {/* TESTIMONIALS & PARTNERS */}
+        <TestimonialSection />
+
+        {/* CAMPAIGN GALLERY & RUNNING POSTERS */}
+        <CampaignGallerySection />
+
+        {/* JENIS KEMITRAAN */}
+        <PartnershipTypes />
+
+        {/* GOOGLE MAP SECTION */}
+        <MapSection />
+
+        {/* FORMULIR KEMITRAAN */}
+        <PartnershipForm />
+
+      </main>
+    );
+  };
 
   return (
     <div className="app-container">
-      {/* HEADER FIXED (Faire-style Header with Search) */}
-      <nav className="navbar navbar-expand-lg navbar-light navbar-glass fixed-top py-3">
+      {/* HEADER FIXED (Dark navbar, with Search Input) */}
+      <nav className="navbar navbar-expand-lg navbar-dark navbar-glass fixed-top py-3">
         <div className="container">
           <a className="navbar-brand d-flex align-items-center" href="#" onClick={(e) => { e.preventDefault(); setSelectedProductId(null); }}>
             <img src="/logo-jmv.png" alt="JMV Logo" style={{ height: '45px' }} />
@@ -513,10 +1115,10 @@ function App() {
               <input
                 type="text"
                 placeholder="Cari brand, spesifikasi, atau nama produk..."
-                className="form-control ps-5"
+                className="form-control ps-5 text-white"
                 style={{
                   borderRadius: '30px',
-                  backgroundColor: '#FAF9F6',
+                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
                   border: '1px solid var(--border-color)',
                   fontSize: '0.9rem',
                   paddingTop: '8px',
@@ -532,6 +1134,7 @@ function App() {
               <a href="#about" className="nav-link" onClick={() => setSelectedProductId(null)}>Tentang JMV</a>
               <a href="#services" className="nav-link" onClick={() => setSelectedProductId(null)}>Produk</a>
               <a href="#campaigns" className="nav-link" onClick={() => setSelectedProductId(null)}>Kampanye</a>
+              <a href="#map-section" className="nav-link" onClick={() => setSelectedProductId(null)}>Lokasi</a>
               <a className="btn-modern-red d-inline-block text-center text-decoration-none" href="#partnership">
                 Daftar Distributor
               </a>
@@ -540,286 +1143,11 @@ function App() {
         </div>
       </nav>
 
-      {/* MAIN CONTENT AREA */}
-      <main>
-        {/* HERO SECTION */}
-        <section id="hero" className="hero-section">
-          <img src="/hero-bg.jpg" className="hero-bg-image" alt="Mizu-X Agioo Background" />
-          <div className="hero-overlay"></div>
+      {/* KONTEN UTAMA */}
+      {renderContent()}
 
-          <div className="container hero-content text-center fade-up pb-5">
-            <span className="badge bg-transparent border border-red text-red rounded-pill px-3 py-2 mb-4 fw-bold font-monospace" style={{ fontSize: '0.8rem' }}>BECOME OUR DISTRIBUTOR!</span>
-            <h1 className="display-3 fw-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-              Kita Bantu Buang Barang Melalui <span className="text-red">Program-Program Penjualan</span>
-            </h1>
-            <p className="fs-5 text-secondary mb-5 max-w-700 mx-auto" style={{ maxWidth: '700px' }}>
-              Penawaran ini hanya untuk perusahaan berbadan hukum PT / CV. Jualannya Laris, Cuan-nya Manissss… Produk Autocare dengan Jaringan Nasional, Margin Besar Up TO 30%.
-            </p>
-
-            <div className="d-flex gap-3 justify-content-center mb-5">
-              <a href="#services" className="btn-modern-red text-decoration-none">Cari & Telusuri Produk</a>
-              <a href="#partnership" className="btn-modern-outline text-decoration-none">Daftar Distributor Resmi</a>
-            </div>
-
-            {/* ASTM and Trust Badges */}
-            <div className="row gy-4 mt-5 justify-content-center fade-up delay-200">
-              <div className="col-md-4 d-flex">
-                <div className="trust-badge d-flex flex-column w-100">
-                  <i className="bi bi-award-fill icon-main"></i>
-                  <h4 className="fw-bold mb-2" style={{ color: 'var(--text-primary)' }}>Lolos Uji ASTM</h4>
-                  <p className="text-secondary small mb-3 border-bottom pb-2">American Standard Testing and Material</p>
-                  <ul className="list-unstyled text-secondary small text-start ps-3 mb-0 flex-grow-1">
-                    <li className="mb-1"><i className="bi bi-check text-red fs-5 me-1 align-middle"></i> ASTM D1120 (Titik Didih)</li>
-                    <li className="mb-1"><i className="bi bi-check text-red fs-5 me-1 align-middle"></i> ASTM D1170 (Titik Beku)</li>
-                    <li className="mb-1"><i className="bi bi-check text-red fs-5 me-1 align-middle"></i> ASTM D1384, D4340, D2809</li>
-                  </ul>
-                </div>
-              </div>
-              <div className="col-md-4 d-flex">
-                <div className="trust-badge d-flex flex-column w-100">
-                  <i className="bi bi-car-front icon-main"></i>
-                  <h4 className="fw-bold mb-3" style={{ color: 'var(--text-primary)' }}>Semua Jenis Kendaraan</h4>
-                  <p className="text-secondary mb-4 flex-grow-1 small">Formula kimia dirancang aman dan optimal untuk perawatan mesin, radiator, kaca, dan bodi mobil maupun motor (yang menggunakan radiator).</p>
-                </div>
-              </div>
-              <div className="col-md-4 d-flex">
-                <div className="trust-badge d-flex flex-column w-100">
-                  <i className="bi bi-buildings icon-main"></i>
-                  <h4 className="fw-bold mb-3" style={{ color: 'var(--text-primary)' }}>Suplai Retail Nasional</h4>
-                  <p className="text-secondary mb-3 flex-grow-1 small">Suplier tepercaya jaringan retail terkemuka di Indonesia.</p>
-                  <p className="text-secondary small mt-auto mb-0" style={{ fontSize: '0.75rem' }}>(Tersedia di Bright by Pertamina, Bright by Alfamart, Indomaret, Transmart, MUJ, dll.)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* VALUE PROPOSITION GRID */}
-        <ValuePropositionBanner />
-
-        {/* B2B CHANNELS MARQUEE */}
-        <section className="py-5 bg-white" style={{ borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
-          <div className="container text-center">
-            <p className="text-secondary small mb-4 fw-bold letter-spacing-1 text-uppercase" style={{ color: 'var(--brand-red)' }}>OUR B2B CHANNELS & PARTNERS</p>
-            <div className="d-flex flex-wrap justify-content-center align-items-center gap-4 gap-md-5 fs-4 fw-bold text-secondary">
-              <span className="partner-item transition" style={{ cursor: 'default' }}>JAK LINGKO</span>
-              <span className="partner-item transition" style={{ cursor: 'default' }}>DAMRI</span>
-              <span className="partner-item transition" style={{ cursor: 'default' }}>FREEPORT INDONESIA</span>
-              <span className="partner-item transition" style={{ cursor: 'default' }}>DAIHATSU</span>
-              <span className="partner-item transition" style={{ cursor: 'default' }}>ISUZU</span>
-              <span className="partner-item transition" style={{ cursor: 'default' }}>SEMEN GRESIK</span>
-            </div>
-          </div>
-        </section>
-
-        {/* CREATIVE CAMPAIGN GALLERY */}
-        <section className="py-5 campaign-section" id="campaigns">
-          <div className="container py-4">
-            <div className="row align-items-center g-5">
-              <div className="col-lg-6 text-start">
-                <span className="badge bg-red mb-3 px-3 py-2 rounded-pill text-white letter-spacing-1">OFFICIAL CAMPAIGNS</span>
-                <h2 className="display-5 fw-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-                  Running Posters & <span className="text-red">Galeri Kampanye</span>
-                </h2>
-                <p className="text-secondary mb-4 fs-5" style={{ lineHeight: '1.7' }}>
-                  Lihat poster program kemitraan resmi JMV untuk informasi margin keuntungan, standar uji lab, dan program hadiah langsung distributor.
-                </p>
-                <div className="d-flex gap-2 mb-4 flex-wrap">
-                  {CAMPAIGN_POSTERS.map((poster, idx) => (
-                    <button
-                      key={poster.id}
-                      className="btn-modern-outline px-3 py-2"
-                      onClick={() => setLightboxImage(poster.image)}
-                      style={{ fontSize: '0.85rem' }}
-                    >
-                      {poster.title}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div className="col-lg-6 d-flex justify-content-center">
-                <div className="poster-deck-wrapper">
-                  <div className="poster-deck">
-                    {CAMPAIGN_POSTERS.map((poster, idx) => (
-                      <div
-                        key={poster.id}
-                        className={`poster-card-3d stack-${(idx + 1) % 4}`}
-                        onClick={() => setLightboxImage(poster.image)}
-                      >
-                        <img src={poster.image} alt={poster.title} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Running posters marquee track */}
-          <div className="poster-marquee-container mt-5">
-            <div className="poster-marquee-track">
-              {[...CAMPAIGN_POSTERS, ...CAMPAIGN_POSTERS].map((poster, idx) => (
-                <div
-                  key={idx}
-                  className="poster-marquee-item"
-                  onClick={() => setLightboxImage(poster.image)}
-                >
-                  <img src={poster.image} alt={poster.title} />
-                  <div className="poster-marquee-overlay">
-                    <i className="bi bi-zoom-in text-white fs-3"></i>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CREATIVE PRODUCT SHOWCASE */}
-        <section id="services" className="py-5" style={{ backgroundColor: 'var(--bg-primary)', borderTop: '1px solid var(--border-color)' }}>
-          <div className="container py-5">
-            <div className="text-center mb-5 fade-up">
-              <h6 className="text-red fw-bold text-uppercase mb-2">Katalog Produk</h6>
-              <h2 className="display-5 fw-bold mb-3" style={{ color: 'var(--text-primary)' }}>Our <span className="text-red">Premium Brands</span></h2>
-              <p className="text-secondary lead">Cari produk berdasarkan kata kunci atau filter brand di bawah ini. Hover untuk melihat spesifikasi ringkas.</p>
-            </div>
-
-            {/* Brand filters navigation */}
-            <div className="brand-filter-nav fade-up">
-              <button
-                className={`brand-filter-btn ${selectedBrand === 'all' ? 'active' : ''}`}
-                onClick={() => setSelectedBrand('all')}
-              >
-                Semua Produk <span className="count-badge">{brandCounts.all}</span>
-              </button>
-              <button
-                className={`brand-filter-btn ${selectedBrand === 'mizu-x' ? 'active' : ''}`}
-                onClick={() => setSelectedBrand('mizu-x')}
-              >
-                Mizu-X Autocare <span className="count-badge">{brandCounts['mizu-x'] || 0}</span>
-              </button>
-              <button
-                className={`brand-filter-btn ${selectedBrand === 'agioo' ? 'active' : ''}`}
-                onClick={() => setSelectedBrand('agioo')}
-              >
-                Agioo Coolant <span className="count-badge">{brandCounts['agioo'] || 0}</span>
-              </button>
-            </div>
-
-            <div className="row g-4">
-              {filteredProducts.map((prod, idx) => (
-                <div className="col-lg-4 col-md-6 fade-up" style={{ animationDelay: `${idx * 0.05}s` }} key={prod.id}>
-                  <div className="flip-card" onClick={() => setSelectedProductId(prod.id)}>
-                    <div className="flip-card-inner">
-                      {/* FRONT - Real Product Image */}
-                      <div className="flip-card-front">
-                        <div className="position-relative h-100" style={{ borderRadius: '8px', overflow: 'hidden', background: '#FFFFFF', border: '1px solid var(--border-color)' }}>
-                          <img
-                            src={prod.image}
-                            alt={prod.name}
-                            style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', padding: '20px' }}
-                          />
-                          <div className="position-absolute bottom-0 start-0 end-0 p-3" style={{ background: 'linear-gradient(to top, rgba(255,255,255,0.98) 0%, transparent 100%)' }}>
-                            <span className="card-brand-badge">{prod.brand}</span>
-                            <h5 className="fw-bold mb-1" style={{ fontSize: '0.95rem', color: 'var(--text-primary)' }}>{prod.name}</h5>
-                            <p className="text-secondary mb-0" style={{ fontSize: '0.75rem' }}>
-                              <i className="bi bi-arrow-repeat me-1"></i>Hover untuk lihat detail
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      {/* BACK - Features + CTA */}
-                      <div className="flip-card-back" style={{ background: `#FFFFFF`, borderRadius: '8px' }}>
-                        <div className="d-flex flex-column h-100 p-4 justify-content-between">
-                          <div className="text-start">
-                            <span className="card-brand-badge">{prod.brand}</span>
-                            <h5 className="fw-bold mb-2" style={{ color: 'var(--text-primary)', fontSize: '1rem' }}>{prod.name}</h5>
-                            <p className="text-secondary small mb-3" style={{ fontStyle: 'italic', opacity: 0.9 }}>{prod.description}</p>
-                            <ul className="list-unstyled text-secondary mb-0">
-                              {prod.specs.slice(0, 3).map((spec, i) => (
-                                <li key={i} className="mb-2 d-flex align-items-start">
-                                  <i className="bi bi-check-circle-fill text-red me-2 mt-1 flex-shrink-0" style={{ fontSize: '0.85rem' }}></i>
-                                  <span className="small">{spec}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                          <button
-                            className="w-100 py-2 btn-modern-red"
-                            style={{ boxShadow: 'none' }}
-                          >
-                            Cek Detail Lengkap
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-              {filteredProducts.length === 0 && (
-                <div className="col-12 text-center py-5">
-                  <i className="bi bi-search text-secondary display-3 mb-3 d-block"></i>
-                  <p className="text-secondary fs-5">Tidak ada produk yang cocok dengan kriteria pencarian Anda.</p>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* ABOUT SECTION */}
-        <section id="about" className="py-5" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-          <div className="container py-5">
-            <div className="row align-items-center">
-              <div className="col-lg-5 mb-5 mb-lg-0 text-center fade-up">
-                <div className="position-relative">
-                  <div className="bg-red rounded-circle position-absolute" style={{ width: '300px', height: '300px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', filter: 'blur(80px)', opacity: '0.1' }}></div>
-                  <div className="position-relative z-1">
-                    <img src="/logo-jmv.png" alt="JMV Logo" className="img-fluid" style={{ maxHeight: '180px' }} />
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-7 px-lg-5 fade-up delay-100 text-start">
-                <h6 className="text-red fw-bold text-uppercase tracking-wider mb-2">Tentang Perusahaan</h6>
-                <h3 className="fw-bold display-6 mb-4" style={{ color: 'var(--text-primary)' }}>PT Jaya Mandiri Ventures</h3>
-                <p className="text-secondary fs-5 mb-4 line-height-lg">
-                  JMV adalah perusahaan yang fokus pada pengembangan produk perawatan kendaraan harian premium dengan jaringan distribusi nasional di Indonesia. Kami berkomitmen memberikan kualitas terbaik berstandar internasional.
-                </p>
-                <div className="d-flex flex-column gap-3">
-                  <div className="d-flex align-items-center p-3 rounded-3" style={{ backgroundColor: 'var(--bg-primary)', borderLeft: '4px solid var(--brand-red)', border: '1px solid var(--border-color)' }}>
-                    <i className="bi bi-award fs-3 text-red me-3"></i>
-                    <div>
-                      <h6 className="fw-bold mb-1" style={{ color: 'var(--text-primary)' }}>Prinsipal Otomotif & Chemical Resmi</h6>
-                      <p className="text-secondary mb-0 small">Pemegang merek eksklusif Agioo, Mizu-X, dan Bio Luminex.</p>
-                    </div>
-                  </div>
-                  <div className="d-flex align-items-center p-3 rounded-3" style={{ backgroundColor: 'var(--bg-primary)', borderLeft: '4px solid var(--brand-red)', border: '1px solid var(--border-color)' }}>
-                    <i className="bi bi-truck fs-3 text-red me-3"></i>
-                    <div>
-                      <h6 className="fw-bold mb-1" style={{ color: 'var(--text-primary)' }}>Distribusi Nasional</h6>
-                      <p className="text-secondary mb-0 small">Menjangkau kota-kota besar di Indonesia untuk menyuplai distributor resmi.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* BONUS HADIAH SECTION */}
-        <BonusSection />
-
-        {/* TESTIMONIALS & PARTNERS */}
-        <TestimonialSection />
-
-        {/* JENIS KEMITRAAN */}
-        <PartnershipTypes />
-
-        {/* FORMULIR KEMITRAAN */}
-        <PartnershipForm />
-
-      </main>
-
-      {/* FOOTER DIRECTORY (Faire-Style) */}
-      <footer className="py-5 bg-white" style={{ borderTop: '1px solid var(--border-color)', color: 'var(--text-primary)' }}>
+      {/* FOOTER DIRECTORY (Adapted for Dark Theme) */}
+      <footer className="py-5" style={{ backgroundColor: 'var(--bg-primary)', borderTop: '1px solid var(--border-color)', color: 'var(--text-primary)' }}>
         <div className="container py-4">
           <div className="row g-5">
             <div className="col-lg-4 text-start">
@@ -846,22 +1174,23 @@ function App() {
             <div className="col-lg-3 col-md-4 text-start">
               <h6 className="fw-bold text-uppercase mb-3" style={{ fontSize: '0.85rem', tracking: '1px' }}>Kemitraan & Program</h6>
               <ul className="list-unstyled text-secondary small d-flex flex-column gap-2">
-                <li><a href="#partnership-types" className="text-decoration-none text-secondary">Program Distributor</a></li>
-                <li><a href="#partnership-types" className="text-decoration-none text-secondary">Program Reseller</a></li>
-                <li><a href="#partnership" className="text-decoration-none text-secondary">Layanan Maklon Kimia</a></li>
-                <li><a href="#campaigns" className="text-decoration-none text-secondary">Hadiah Langsung Reward</a></li>
+                <li><a href="#partnership-types" className="footer-link">Program Distributor</a></li>
+                <li><a href="#partnership-types" className="footer-link">Program Reseller</a></li>
+                <li><a href="#partnership" className="footer-link">Layanan Maklon Kimia</a></li>
+                <li><a href="#campaigns" className="footer-link">Hadiah Langsung Reward</a></li>
               </ul>
             </div>
             <div className="col-lg-2 col-md-4 text-start">
               <h6 className="fw-bold text-uppercase mb-3" style={{ fontSize: '0.85rem', tracking: '1px' }}>Perusahaan</h6>
               <ul className="list-unstyled text-secondary small d-flex flex-column gap-2">
-                <li><a href="#about" className="text-decoration-none text-secondary">Tentang Kami</a></li>
-                <li><a href="#services" className="text-decoration-none text-secondary">Katalog Grosir</a></li>
-                <li><a href="#partnership" className="text-decoration-none text-secondary">Kontak Registrasi</a></li>
+                <li><a href="#about" className="footer-link">Tentang Kami</a></li>
+                <li><a href="#services" className="footer-link">Katalog Grosir</a></li>
+                <li><a href="#map-section" className="footer-link">Lokasi Kantor JMV</a></li>
+                <li><a href="#partnership" className="footer-link">Kontak Registrasi</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-top mt-5 pt-4 text-center text-secondary small d-flex flex-wrap justify-content-between align-items-center">
+          <div className="border-top mt-5 pt-4 text-center text-secondary small d-flex flex-wrap justify-content-between align-items-center" style={{ borderColor: 'var(--border-color) !important' }}>
             <p className="mb-0">© {new Date().getFullYear()} PT Jaya Mandiri Ventures. All rights reserved.</p>
             <div className="d-flex gap-3 mt-3 mt-md-0">
               <span className="text-secondary">Sertifikasi ASTM D1120 / D1170 / D1384 / D4340</span>
@@ -869,87 +1198,6 @@ function App() {
           </div>
         </div>
       </footer>
-
-      {/* B2B DETAIL OVERLAY MODAL (Faire-Style Detail Popup) */}
-      {activeProduct && (
-        <div className="b2b-detail-overlay" onClick={() => setSelectedProductId(null)}>
-          <div className="b2b-detail-card" onClick={(e) => e.stopPropagation()}>
-            <button className="b2b-detail-close" onClick={() => setSelectedProductId(null)}>
-              <i className="bi bi-x-lg"></i>
-            </button>
-            <div className="row g-0">
-              <div className="col-lg-5 p-4 p-md-5 d-flex align-items-center justify-content-center" style={{ backgroundColor: '#FAF9F6' }}>
-                <img src={activeProduct.image} className="img-fluid rounded shadow-sm" alt={activeProduct.name} style={{ maxHeight: '350px', objectFit: 'contain' }} />
-              </div>
-              <div className="col-lg-7 p-4 p-md-5 text-start d-flex flex-column justify-content-between">
-                <div>
-                  <span className="badge bg-red mb-3 fs-7 px-3 py-1 text-white rounded-pill">{activeProduct.brand}</span>
-                  <h2 className="fw-bold mb-3" style={{ color: 'var(--text-primary)', fontSize: '2rem' }}>{activeProduct.name}</h2>
-                  <p className="text-secondary mb-4" style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>{activeProduct.description}</p>
-                  
-                  <h6 className="fw-bold mb-3" style={{ color: 'var(--text-primary)' }}>
-                    <i className="bi bi-check2-circle text-red me-2"></i> Keunggulan Utama & Spesifikasi:
-                  </h6>
-                  <ul className="list-group list-group-flush mb-4">
-                    {activeProduct.specs.map((spec, index) => (
-                      <li key={index} className="list-group-item bg-transparent text-secondary px-0 py-2 border-0 d-flex align-items-center" style={{ fontSize: '0.85rem' }}>
-                        <i className="bi bi-check text-red fs-5 me-2"></i> {spec}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className="border-top pt-4 mt-3">
-                  <div className="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                      <span className="small text-secondary d-block">Potensi Keuntungan Grosir</span>
-                      <span className="fs-5 fw-bold text-success">30% Margin Bersih</span>
-                    </div>
-                    <div>
-                      <span className="small text-secondary d-block">Skema Logistik</span>
-                      <span className="small fw-bold text-dark">Gratis Kirim Gudang</span>
-                    </div>
-                  </div>
-                  <div className="d-flex gap-3">
-                    <a
-                      href={`https://wa.me/6282323244285?text=Halo%20JMV,%20saya%20tertarik%20bertanya%20mengenai%20wholesale%20grosir%20untuk%20produk%20${encodeURIComponent(activeProduct.name)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-modern-red text-decoration-none flex-grow-1 text-center"
-                    >
-                      <i className="bi bi-whatsapp me-2"></i> Ajukan Penawaran Grosir
-                    </a>
-                    <button onClick={() => setSelectedProductId(null)} className="btn-modern-outline">
-                      Tutup
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* LIGHTBOX OVERLAY */}
-      {lightboxImage && (
-        <div className="b2b-detail-overlay" onClick={() => setLightboxImage(null)}>
-          <div className="position-relative text-center" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="b2b-detail-close"
-              style={{ top: '-45px', right: '0' }}
-              onClick={() => setLightboxImage(null)}
-            >
-              <i className="bi bi-x-lg"></i>
-            </button>
-            <img
-              src={lightboxImage}
-              alt="Campaign Poster"
-              className="img-fluid rounded shadow-lg animate-zoom"
-              style={{ maxHeight: '85vh', maxWidth: '95vw', objectFit: 'contain' }}
-            />
-          </div>
-        </div>
-      )}
 
       {/* TOMBOL WHATSAPP MELAYANG */}
       <FloatingWhatsApp />
