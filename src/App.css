@@ -1166,32 +1166,65 @@ textarea:focus::placeholder {
   box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
 }
 
-.logo-badge-about {
+/* --- 3D About Logo Flip Card --- */
+.flip-card-about {
+  width: 200px;
+  height: 200px;
+  perspective: 1200px;
+  display: inline-block;
+}
+
+.flip-card-inner-about {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  border-radius: 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease;
+  animation: card-flip-loop 12s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+
+.flip-card-about:hover .flip-card-inner-about {
+  box-shadow: 0 15px 35px rgba(211, 47, 47, 0.3), 0 0 20px rgba(211, 47, 47, 0.15);
+  animation-play-state: paused;
+}
+
+@keyframes card-flip-loop {
+  0%, 35% {
+    transform: rotateY(0deg);
+  }
+  45%, 80% {
+    transform: rotateY(180deg);
+  }
+  90%, 100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.flip-card-front-about,
+.flip-card-back-about {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.flip-card-front-about {
   background-color: #ffffff;
   padding: 24px;
-  border-radius: 16px;
-  display: inline-block;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.logo-badge-about:hover {
-  transform: scale(1.05) rotate(1deg);
-  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15);
-}
-
-.logo-badge-about img {
-  animation: spin-slow 25s linear infinite;
-}
-
-@keyframes spin-slow {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.flip-card-back-about {
+  background: linear-gradient(135deg, #a00000 0%, #d32f2f 100%);
+  transform: rotateY(180deg);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -1231,4 +1264,109 @@ textarea:focus::placeholder {
 /* Sibling selector: hide the scrolling marquee when the input is focused */
 .search-input-field:focus ~ .custom-placeholder-marquee {
   display: none !important;
+}
+
+/* --- Visual Sweetener Animations --- */
+
+/* Sparkle Dots particles */
+.sparkle-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: var(--brand-red);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--brand-red), 0 0 20px var(--brand-red);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+  animation: pulse-sparkle-glow 3s infinite ease-in-out alternate;
+}
+
+@keyframes pulse-sparkle-glow {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0.65;
+  }
+}
+
+/* Glowing text highlight */
+.text-red {
+  color: var(--brand-red) !important;
+  text-shadow: 0 0 8px rgba(211, 47, 47, 0.2);
+  animation: text-pulse-glow 4s infinite ease-in-out;
+}
+
+@keyframes text-pulse-glow {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(211, 47, 47, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 16px rgba(211, 47, 47, 0.6), 0 0 25px rgba(211, 47, 47, 0.2);
+  }
+}
+
+/* Scroll Down Mouse Wheel Indicator */
+.scroll-indicator-wrapper {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.mouse-wheel-scroll {
+  width: 24px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  position: relative;
+  animation: mouse-scroll-float 2s infinite ease-in-out alternate;
+}
+
+.mouse-wheel-dot {
+  width: 4px;
+  height: 8px;
+  background-color: var(--brand-red);
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: mouse-dot-scroll 1.8s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes mouse-scroll-float {
+  0% {
+    transform: translateY(0);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    transform: translateY(6px);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes mouse-dot-scroll {
+  0% {
+    top: 8px;
+    opacity: 1;
+    height: 6px;
+  }
+  50% {
+    top: 18px;
+    opacity: 0.6;
+    height: 10px;
+  }
+  100% {
+    top: 24px;
+    opacity: 0;
+    height: 4px;
+  }
 }

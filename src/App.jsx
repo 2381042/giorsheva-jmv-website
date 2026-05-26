@@ -1263,6 +1263,12 @@ function App() {
           <div className="ambient-glow" style={{ top: '10%', left: '10%' }}></div>
           <div className="ambient-glow-2" style={{ bottom: '20%', right: '15%' }}></div>
 
+          {/* Sparkle Dots */}
+          <div className="sparkle-dot" style={{ top: '15%', left: '15%', animationDelay: '0s' }}></div>
+          <div className="sparkle-dot" style={{ top: '35%', left: '82%', animationDelay: '0.6s' }}></div>
+          <div className="sparkle-dot" style={{ top: '70%', left: '12%', animationDelay: '1.2s' }}></div>
+          <div className="sparkle-dot" style={{ top: '25%', left: '88%', animationDelay: '1.8s' }}></div>
+
           <img src="/hero-bg-new.png" className="hero-bg-image" alt="Mizu-X Agioo Background" />
           <div className="hero-overlay"></div>
 
@@ -1314,6 +1320,13 @@ function App() {
                 </div>
               </div>
             </div>
+            
+            {/* Scroll Down Mouse Indicator */}
+            <div className="scroll-indicator-wrapper d-none d-md-flex">
+              <div className="mouse-wheel-scroll">
+                <div className="mouse-wheel-dot"></div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -1332,8 +1345,23 @@ function App() {
                 <div className="position-relative">
                   <div className="bg-red rounded-circle position-absolute" style={{ width: '300px', height: '300px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', filter: 'blur(80px)', opacity: '0.2' }}></div>
                   <div className="position-relative z-1">
-                    <div className="logo-badge-about">
-                      <img src="/logo-jmv.png" alt="JMV Logo" className="img-fluid" style={{ maxHeight: '130px', objectFit: 'contain' }} />
+                    <div className="flip-card-about">
+                      <div className="flip-card-inner-about">
+                        {/* Front Side: JMV Logo */}
+                        <div className="flip-card-front-about">
+                          <img src="/logo-jmv.png" alt="JMV Logo" className="img-fluid" style={{ maxHeight: '100px', objectFit: 'contain' }} />
+                        </div>
+                        {/* Back Side: JMV Brand Info */}
+                        <div className="flip-card-back-about">
+                          <div className="d-flex flex-column align-items-center justify-content-center h-100 p-4">
+                            <i className="bi bi-shield-fill-check text-white mb-2" style={{ fontSize: '2.6rem', textShadow: '0 0 12px rgba(255,255,255,0.4)' }}></i>
+                            <h5 className="text-white fw-bold mb-1" style={{ fontSize: '0.95rem', letterSpacing: '0.5px' }}>PT JMV</h5>
+                            <p className="text-white-50 mb-0 small text-center" style={{ fontSize: '0.72rem', lineHeight: '1.4' }}>
+                              {lang === 'en' ? 'Official Autocare Principal' : 'Prinsipal Resmi Autocare'}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
