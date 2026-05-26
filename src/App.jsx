@@ -1546,9 +1546,9 @@ function App() {
         </section>
 
         {/* B2B CHANNELS */}
-        <section className="py-5" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+        <section className="b2b-section py-5">
           <div className="container text-center reveal">
-            <p className="text-secondary mb-4 fw-bold letter-spacing-1 text-uppercase">B2B Channels:</p>
+            <p className="b2b-title mb-4 fw-bold letter-spacing-1 text-uppercase">B2B Channels:</p>
             <div className="b2b-marquee-container">
               <div className="b2b-marquee-track">
                 {B2B_LOGOS.map((logo, idx) => (

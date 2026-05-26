@@ -887,16 +887,63 @@
   color: #ffffff !important;
 }
 
-/* --- B2B Channels Marquee --- */
+/* --- B2B Channels Section & Marquee --- */
+.b2b-section {
+  background: linear-gradient(135deg, #fdfdfd 0%, #f4f5f7 100%);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.b2b-title {
+  color: #2d3748 !important; /* Premium dark gray for text contrast */
+  letter-spacing: 1.5px;
+  position: relative;
+  display: inline-block;
+}
+
+.b2b-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25px;
+  height: 2px;
+  background-color: var(--brand-red);
+}
+
 .b2b-marquee-container {
   width: 100%;
   overflow: hidden;
   position: relative;
-  background: rgba(10, 10, 10, 0.4);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 30px 0;
-  backdrop-filter: blur(5px);
+  padding: 25px 0;
+}
+
+/* Premium white/light gradient fade overlays on screen edges */
+.b2b-marquee-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(to right, #fdfdfd 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.b2b-marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(to left, #f4f5f7 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .b2b-marquee-track {
@@ -914,39 +961,37 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 180px;
-  height: 90px;
-  margin: 0 20px;
-  padding: 16px;
+  width: 170px;
+  height: 85px;
+  margin: 0 18px;
+  padding: 14px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
-  /* Elegant glassmorphic background */
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #ffffff; /* Premium white background for logo items */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 .b2b-marquee-item:hover {
-  transform: translateY(-5px) scale(1.05);
-  background: rgba(211, 47, 47, 0.05);
+  transform: translateY(-6px) scale(1.03);
   border-color: var(--brand-red);
-  box-shadow: 0 8px 25px rgba(211, 47, 47, 0.25);
+  /* Elegant red glow underneath and soft shadow */
+  box-shadow: 0 12px 24px rgba(211, 47, 47, 0.12), 0 4px 8px rgba(0, 0, 0, 0.02);
+  background: #ffffff;
 }
 
 .b2b-marquee-item img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  /* Premium uniform silver/white logo look */
-  filter: brightness(0) invert(1) opacity(0.6);
+  filter: grayscale(15%) contrast(1.0); /* Cohesive slight grayscale when inactive */
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .b2b-marquee-item:hover img {
-  /* Animate to full glowing white on hover */
-  filter: brightness(0) invert(1) opacity(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  filter: grayscale(0%) contrast(1.05); /* Highlight color on hover */
+  transform: scale(1.05);
 }
 
 @keyframes scroll-b2b-channels {
