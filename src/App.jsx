@@ -1376,13 +1376,9 @@ function App() {
                             <img 
                               src="/logo-jmv.png" 
                               alt="JMV Logo" 
-                              className="img-fluid mb-2" 
-                              style={{ maxHeight: '60px', objectFit: 'contain' }} 
+                              className="img-fluid" 
+                              style={{ maxHeight: '100px', objectFit: 'contain' }} 
                             />
-                            <p className="mb-0 small text-center mt-1" style={{ fontSize: '0.72rem', lineHeight: '1.4', fontWeight: '500' }}>
-                              <strong style={{ color: 'var(--brand-red)' }}>PT JMV</strong><br />
-                              <span style={{ color: '#555555' }}>{lang === 'en' ? 'Official Autocare Principal' : 'Prinsipal Resmi Autocare'}</span>
-                            </p>
                           </div>
                         </div>
                       </div>
