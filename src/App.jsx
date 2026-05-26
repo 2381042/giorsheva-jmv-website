@@ -1375,13 +1375,13 @@ function App() {
                           <div className="d-flex flex-column align-items-center justify-content-center h-100 p-4">
                             <img 
                               src="/logo-jmv.png" 
-                              alt="JMV Logo White" 
+                              alt="JMV Logo" 
                               className="img-fluid mb-2" 
-                              style={{ maxHeight: '45px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} 
+                              style={{ maxHeight: '60px', objectFit: 'contain' }} 
                             />
-                            <p className="text-white-50 mb-0 small text-center mt-1" style={{ fontSize: '0.72rem', lineHeight: '1.4', fontWeight: '500' }}>
-                              <strong className="text-white">PT JMV</strong><br />
-                              {lang === 'en' ? 'Official Autocare Principal' : 'Prinsipal Resmi Autocare'}
+                            <p className="mb-0 small text-center mt-1" style={{ fontSize: '0.72rem', lineHeight: '1.4', fontWeight: '500' }}>
+                              <strong style={{ color: 'var(--brand-red)' }}>PT JMV</strong><br />
+                              <span style={{ color: '#555555' }}>{lang === 'en' ? 'Official Autocare Principal' : 'Prinsipal Resmi Autocare'}</span>
                             </p>
                           </div>
                         </div>
