@@ -1373,9 +1373,14 @@ function App() {
                         {/* Back Side: JMV Brand Info */}
                         <div className="flip-card-back-about">
                           <div className="d-flex flex-column align-items-center justify-content-center h-100 p-4">
-                            <i className="bi bi-shield-fill-check text-white mb-2" style={{ fontSize: '2.6rem', textShadow: '0 0 12px rgba(255,255,255,0.4)' }}></i>
-                            <h5 className="text-white fw-bold mb-1" style={{ fontSize: '0.95rem', letterSpacing: '0.5px' }}>PT JMV</h5>
-                            <p className="text-white-50 mb-0 small text-center" style={{ fontSize: '0.72rem', lineHeight: '1.4' }}>
+                            <img 
+                              src="/logo-jmv.png" 
+                              alt="JMV Logo White" 
+                              className="img-fluid mb-2" 
+                              style={{ maxHeight: '45px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} 
+                            />
+                            <p className="text-white-50 mb-0 small text-center mt-1" style={{ fontSize: '0.72rem', lineHeight: '1.4', fontWeight: '500' }}>
+                              <strong className="text-white">PT JMV</strong><br />
                               {lang === 'en' ? 'Official Autocare Principal' : 'Prinsipal Resmi Autocare'}
                             </p>
                           </div>
