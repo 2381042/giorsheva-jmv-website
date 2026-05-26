@@ -1177,27 +1177,6 @@ const TestimonialSection = ({ lang }) => {
 
   return (
     <section className="py-5 overflow-hidden" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
-      {/* Marquee Partners */}
-      <div className="marquee-container mb-5 reveal">
-        <div className="marquee-content">
-          <span className="partner-logo-text">PERTAMINA</span>
-          <span className="partner-logo-text">MUJ</span>
-          <span className="partner-logo-text text-primary">ENM</span>
-          <span className="partner-logo-text text-red">DKSH</span>
-          <span className="partner-logo-text text-success">SAI</span>
-          <span className="partner-logo-text text-info">bene digital</span>
-          <span className="partner-logo-text text-danger">bright by Alfamart</span>
-          {/* Duplicate for infinite effect */}
-          <span className="partner-logo-text">PERTAMINA</span>
-          <span className="partner-logo-text">MUJ</span>
-          <span className="partner-logo-text text-primary">ENM</span>
-          <span className="partner-logo-text text-red">DKSH</span>
-          <span className="partner-logo-text text-success">SAI</span>
-          <span className="partner-logo-text text-info">bene digital</span>
-          <span className="partner-logo-text text-danger">bright by Alfamart</span>
-        </div>
-      </div>
-
       <div className="container py-5 reveal">
         <div className="text-center mb-5">
           <h6 className="text-red fw-bold text-uppercase mb-2">{t('testiSubtitle')}</h6>
