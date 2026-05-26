@@ -1181,6 +1181,20 @@ textarea:focus::placeholder {
   box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15);
 }
 
+.logo-badge-about img {
+  animation: spin-slow 25s linear infinite;
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 /* --- Search Input Custom Marquee Placeholder --- */
 .custom-placeholder-marquee {
   position: absolute;
