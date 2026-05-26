@@ -1157,6 +1157,19 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
   const [lang, setLang] = useState(() => localStorage.getItem('jmv_lang') || 'id');
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        const currentProgress = (window.pageYOffset / totalScroll) * 100;
+        setScrollProgress(currentProgress);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const changeLanguage = (newLang) => {
     setLang(newLang);
@@ -1345,7 +1358,13 @@ function App() {
                 <div className="position-relative">
                   <div className="bg-red rounded-circle position-absolute" style={{ width: '300px', height: '300px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', filter: 'blur(80px)', opacity: '0.2' }}></div>
                   <div className="position-relative z-1">
-                    <div className="flip-card-about">
+                    <div className="flip-card-about position-relative">
+                      {/* About section decorative floating sparkles */}
+                      <div className="sparkle-dot-about" style={{ top: '-10%', left: '-10%', animationDelay: '0.2s' }}></div>
+                      <div className="sparkle-dot-about" style={{ top: '105%', left: '85%', animationDelay: '0.8s' }}></div>
+                      <div className="sparkle-dot-about" style={{ top: '85%', left: '-15%', animationDelay: '1.4s' }}></div>
+                      <div className="sparkle-dot-about" style={{ top: '-5%', left: '90%', animationDelay: '2.0s' }}></div>
+
                       <div className="flip-card-inner-about">
                         {/* Front Side: JMV Logo */}
                         <div className="flip-card-front-about">
@@ -1447,6 +1466,9 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Top Scroll Progress Indicator */}
+      <div className="scroll-progress-bar" style={{ width: `${scrollProgress}%` }}></div>
+
       {/* HEADER FIXED (Dark navbar, with Search Input) */}
       <nav className="navbar navbar-expand-lg navbar-dark navbar-glass fixed-top py-3">
         <div className="container-fluid px-4 px-xl-5">
