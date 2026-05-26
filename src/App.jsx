@@ -1584,9 +1584,6 @@ function App() {
         {/* TESTIMONIALS & PARTNERS */}
         <TestimonialSection lang={lang} />
 
-        {/* CAMPAIGN GALLERY & RUNNING POSTERS */}
-        <CampaignGallerySection lang={lang} />
-
         {/* JENIS KEMITRAAN */}
         <PartnershipTypes lang={lang} />
 
@@ -1646,7 +1643,6 @@ function App() {
               <a href="#hero" className="nav-link" onClick={() => setSelectedProductId(null)}>{t('navHome')}</a>
               <a href="#about" className="nav-link" onClick={() => setSelectedProductId(null)}>{t('navAbout')}</a>
               <a href="#services" className="nav-link" onClick={() => setSelectedProductId(null)}>{t('navProducts')}</a>
-              <a href="#campaigns" className="nav-link" onClick={() => setSelectedProductId(null)}>{t('navCampaigns')}</a>
               <a href="#map-section" className="nav-link" onClick={() => setSelectedProductId(null)}>{t('navLocation')}</a>
               <a className="btn-modern-red d-inline-block text-center text-decoration-none" href="#partnership" style={{ whiteSpace: 'nowrap' }}>
                 {t('navDistributor')}
@@ -1750,11 +1746,6 @@ function App() {
                 <li className="footer-link-item">
                   <a href="#partnership" className="footer-modern-link">
                     <i className="bi bi-chevron-right"></i>{t('footerLinkMaklon')}
-                  </a>
-                </li>
-                <li className="footer-link-item">
-                  <a href="#campaigns" className="footer-modern-link">
-                    <i className="bi bi-chevron-right"></i>{t('footerLinkRewards')}
                   </a>
                 </li>
               </ul>
