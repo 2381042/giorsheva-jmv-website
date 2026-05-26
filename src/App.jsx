@@ -1422,7 +1422,7 @@ function App() {
           <div className="ambient-glow" style={{ top: '10%', left: '10%' }}></div>
           <div className="ambient-glow-2" style={{ bottom: '20%', right: '15%' }}></div>
 
-          <img src="/hero-bg.jpg" className="hero-bg-image" alt="Mizu-X Agioo Background" />
+          <img src="/hero-bg-new.png" className="hero-bg-image" alt="Mizu-X Agioo Background" />
           <div className="hero-overlay"></div>
 
           <div className="container hero-content text-center reveal pb-5">
